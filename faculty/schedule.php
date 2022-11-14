@@ -17,6 +17,7 @@
             }
              #schedule a {
                 text-decoration: none;
+                 color:black;
             }
             
             #schedule td, #schedule th {
