@@ -15,6 +15,9 @@
               width: 65%;
               margin:80px;
             }
+             #schedule a {
+                text-decoration: none;
+            }
             
             #schedule td, #schedule th {
               border: 1px solid #ddd;
