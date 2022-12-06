@@ -28,7 +28,7 @@ li a:hover {
 </head>
 <body>
 <ul>
-  <li><a class="active" href="view.php">Home</a></li>
+  <li><a class="active" href="index.php">Home</a></li>
   <li><a href="home.php">Class Schedule</a></li>
   <li><a href="announcementpage.php">Announcement</a></li>
   <li><a href="progress.php">Progress</a></li>

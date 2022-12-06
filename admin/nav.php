@@ -29,10 +29,11 @@ li a:hover {
 <body style="background-color: #fcfaf2;">
 
 <ul>
-  <li><a class="active" href="view.php">Home</a></li>
+  <li><a class="active" href="index.php">Home</a></li>
   <li><a href="home.php">Class Schedule</a></li>
   <li><a href="announcementpage.php">Announcement</a></li>
   <li><a href="progress.php">Progress</a></li>
+  <li style="float:right"><a>ADMIN DASHBOARD</a></li>
   <li style="float:right"><a href="login.php">Login</a></li>
   <li style="float:right"><a  href="profile.php">Profile</a></li>
 </ul>
