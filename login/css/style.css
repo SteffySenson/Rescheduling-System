@@ -6,6 +6,7 @@
    box-sizing: border-box;
    outline: none; border:none;
    text-decoration: none;
+   background-image: url("assets/bg1.png");
 }
 
 .container{
@@ -27,7 +28,7 @@
 }
 
 .container .content h3 span{
-   background: crimson;
+   background: darkorange;
    color:#fff;
    border-radius: 5px;
    padding:0 15px;
@@ -39,7 +40,7 @@
 }
 
 .container .content h1 span{
-   color:crimson;
+   color:darkorange;
 }
 
 .container .content p{
@@ -58,7 +59,7 @@
 }
 
 .container .content .btn:hover{
-   background: crimson;
+   background: darkorange;
 }
 
 .form-container{
@@ -103,14 +104,14 @@
 
 .form-container form .form-btn{
    background: #fbd0d9;
-   color:crimson;
+   color:darkorange;
    text-transform: capitalize;
    font-size: 20px;
    cursor: pointer;
 }
 
 .form-container form .form-btn:hover{
-   background: crimson;
+   background: darkorange;
    color:#fff;
 }
 
@@ -121,13 +122,13 @@
 }
 
 .form-container form p a{
-   color:crimson;
+   color:darkorange;
 }
 
 .form-container form .error-msg{
    margin:10px 0;
    display: block;
-   background: crimson;
+   background: darkorange;
    color:#fff;
    border-radius: 5px;
    font-size: 20px;
