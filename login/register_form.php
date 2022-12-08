@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
 <div class="form-container">
 
    <form action="" method="post">
-      <h3>register now</h3>
+      <h3>register</h3>
       <?php
       if(isset($error)){
          foreach($error as $error){
@@ -65,6 +65,7 @@ if(isset($_POST['submit'])){
       <input type="password" name="cpassword" required placeholder="*Confirm your password">
       <select name="user_type">
          <option value="user">User</option>
+         <option value="admin">Faculty</option>
          <option value="admin">Admin</option>
       </select>
       <input type="submit" name="submit" value="register now" class="form-btn">

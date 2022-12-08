@@ -1,3 +1,14 @@
+<?php
+
+@include 'config.php';
+
+session_start();
+
+if(!isset($_SESSION['faculty_name'])){
+   header('location:login_form.php');
+}
+
+?>
 <html>
     <head>
         <title>

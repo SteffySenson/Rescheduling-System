@@ -33,7 +33,7 @@ li a:hover {
   <li><a href="home.php">Class Schedule</a></li>
   <li><a href="announcementpage.php">Announcement</a></li>
   <li><a href="progress.php">Progress</a></li>
-  <li style="float:right"><a href="login.php">Login</a></li>
+  <li style="float:right"><a href="../login/logout.php">Logout</a></li>
   <li style="float:right"><a  href="profile.php">Profile</a></li>
 </ul>
 </body>

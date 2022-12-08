@@ -27,8 +27,8 @@ if(!isset($_SESSION['admin_name'])){
 <div class="container">
 
    <div class="content">
-      <h3>hi, <span>admin</span></h3>
-      <h1>welcome <span><?php echo $_SESSION['admin_name'] ?></span></h1><br>
+      <h3>hi, <span><?php echo $_SESSION['admin_name'] ?></span></h3>
+      <h1>welcome</h1><br>
       <a href="./block/blockadd.php" class="btn">Add Block</a>
       <a href="./block/viewblock.php" class="btn">View Block</a>
       <a href="./floor/flooradd.php" class="btn">Add Floor</a>
