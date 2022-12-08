@@ -59,16 +59,16 @@ if(isset($_POST['submit'])){
          };
       };
       ?>
-      <input type="text" name="name" required placeholder="enter your name">
-      <input type="email" name="email" required placeholder="enter your email">
-      <input type="password" name="password" required placeholder="enter your password">
-      <input type="password" name="cpassword" required placeholder="confirm your password">
+      <input type="text" name="name" required placeholder="Enter your name">
+      <input type="email" name="email" required placeholder="Enter your email">
+      <input type="password" name="password" required placeholder="Enter your password">
+      <input type="password" name="cpassword" required placeholder="*Confirm your password">
       <select name="user_type">
-         <option value="user">user</option>
-         <option value="admin">admin</option>
+         <option value="user">User</option>
+         <option value="admin">Admin</option>
       </select>
       <input type="submit" name="submit" value="register now" class="form-btn">
-      <p>already have an account? <a href="login_form.php">login now</a></p>
+      <p>Already have an account? <a href="login_form.php">login</a></p>
    </form>
 
 </div>

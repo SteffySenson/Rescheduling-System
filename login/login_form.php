@@ -63,10 +63,12 @@ if(isset($_POST['submit'])){
          };
       };
       ?>
-      <input type="email" name="email" required placeholder="enter your email">
-      <input type="password" name="password" required placeholder="enter your password">
-      <input type="submit" name="submit" value="login now" class="form-btn">
+      
+      <input type="email" name="email" required placeholder="Enter your Email">
+      <input type="password" name="password" required placeholder="Enter your password">
+      <input type="submit" name="submit" value="login" class="form-btn">
       <p><a href="register_form.php">Sign Up? </a></p>
+   </form>
    </form>
 
 </div>
