@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
 }
 
 .btn:hover{
-   color: crimson;
+   color: darkorange;
 }
 </style>
 </head>

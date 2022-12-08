@@ -19,33 +19,102 @@ if(!isset($_SESSION['admin_name'])){
    <title>admin page</title>
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
+*{
+   font-family: 'Poppins', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none;
+}
+
+.container{
+  
+   min-height: 80vh;
+   display: block;
+   float: left;
+   padding: 5px 5px;
+   width: 70vh;
+   margin: 0px;
+   background-color: rgba(0,0,0, 0.4);
+
+}
+
+.container .content{
+   text-align: center;
+}
+
+.container .content h3{
+   font-size: 26px;
+   color:#333;
+}
+
+.container .content h3 span{
+   background: darkorange;
+   color:#fff;
+   border-radius: 5px;
+   padding:0 15px;
+}
+
+.container .content h1{
+   font-size: 50px;
+   color:#333;
+}
+
+.container .content h1 span{
+   color:darkorange;
+}
+
+.container .content p{
+   font-size: 25px;
+   margin-bottom: 20px;
+}
+
+.container .content .btn{
+   display: block;
+   padding: 5px 20px;
+   font-size: 20px;
+   background: #333;
+   color:#fff;
+   margin:0 60px;
+   text-transform: capitalize;
+   border: 1px solid darkorange;
+   float: left;
+   clear: both;
+   width: 400px;
+}
+
+.container .content .btn:hover{
+   background: darkorange;
+}
+</style>
 </head>
 <body>
+   <?php
+   include("index.php");
+   ?>
    
 <div class="container">
 
    <div class="content">
-      <h3>hi, <span><?php echo $_SESSION['admin_name'] ?></span></h3>
-      <h1>welcome</h1><br>
-      <a href="./block/blockadd.php" class="btn">Add Block</a>
-      <a href="./block/viewblock.php" class="btn">View Block</a>
-      <a href="./floor/flooradd.php" class="btn">Add Floor</a>
-      <a href="./floor/viewfloor.php" class="btn">View Floor</a>
-      <a href="./room/roomadd.php" class="btn">Add Room</a>
-      <a href="./room/viewroom.php" class="btn">View Room</a><br><br>
-      <a href="./department/departmentadd.php" class="btn">Add Department</a>
-      <a href="./department/viewdepartment.php" class="btn">View Department</a>
-      <a href="./semester/semesteradd.php" class="btn">Add Semester</a>
-      <a href="./semester/viewsemester.php" class="btn">View Semester</a><br> <br>
-      <a href="./subject/subjectadd.php" class="btn">Add Subject</a>
-      <a href="./subject/viewsubject.php" class="btn">View Subject</a>
-      <a href="./student/studentadd.php" class="btn">Add Student</a>
-      <a href="./student/viewstudent.php" class="btn">View Student</a>
-      <a href="./teacher/teacheradd.php" class="btn">Add Teacher</a>
-      <a href="./teacher/viewteacher.php" class="btn">View Teacher</a><br> <br>
-      <a href="logout.php" class="btn">logout</a>
+      <a href="./block/blockadd.php"target="_top" class="btn">Add Announcement</a>
+      <a href="./block/viewblock.php"target="_top" class="btn">View Announcement</a>
+      <a href="./floor/flooradd.php"target="_top" class="btn">Add Progress</a>
+      <a href="./floor/viewfloor.php"target="_top" class="btn">View Progress</a>
+      <a href="./room/roomadd.php"target="_top" class="btn">Add Class Schedule</a>
+      <a href="./room/viewroom.php"target="_top" class="btn">View Class Schedule</a>
+      <a href="./department/departmentadd.php"target="_top" class="btn">Add Department</a>
+      <a href="./department/viewdepartment.php"target="_top" class="btn">View Department</a>
+      <a href="./semester/semesteradd.php"target="_top" class="btn">Add Semester</a>
+      <a href="./semester/viewsemester.php"target="_top" class="btn">View Semester</a>
+      <a href="./subject/subjectadd.php"target="_top" class="btn">Add Subject</a>
+      <a href="./subject/viewsubject.php"target="_top" class="btn">View Subject</a>
+      <a href="./student/studentadd.php"target="_top" class="btn">Add Student</a>
+      <a href="./student/viewstudent.php"target="_top" class="btn">View Student</a>
+      <a href="./teacher/teacheradd.php"target="_top" class="btn">Add Teacher</a>
+      <a href="./teacher/viewteacher.php"target="_top" class="btn">View Teacher</a>
    </div>
 
 </div>

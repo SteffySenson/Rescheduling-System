@@ -1,3 +1,6 @@
+<?php
+@include 'config.php';
+?>
 <html>
 <head>
 <style>
@@ -24,18 +27,17 @@ li a {
 li a:hover {
   background-color: #111;
 }
+li a h3 {
+  color: darkorange;
+}
 </style>
 </head>
 <body style="background-color: #fcfaf2;">
 
 <ul>
-  <li><a class="active" href="index.php">Home</a></li>
-  <li><a href="home.php">Class Schedule</a></li>
-  <li><a href="announcementpage.php">Announcement</a></li>
-  <li><a href="progress.php">Progress</a></li>
-  <li style="float:right"><a>ADMIN DASHBOARD</a></li>
+  <li><a><h3>Admin Dashboard</h3></a></li>
   <li style="float:right"><a href="../login/logout.php">Logout</a></li>
-  <li style="float:right"><a  href="profile.php">Profile</a></li>
+  <li style="float:right"><a><h3>Welcome, <?php echo $_SESSION['admin_name'] ?></h3></a></li>
 </ul>
 </body>
 </html>

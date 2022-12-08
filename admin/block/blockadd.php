@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
 }
 
 .btn:hover{
-   color: crimson;
+   color: darkorange;
 }
 </style>
 </head>
@@ -67,13 +67,6 @@ if(isset($_POST['submit'])){
       <input type="submit" name="submit" value="Submit" class="form-btn">
       <a href='../admin_page.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
    </form>
-
-
-
 </div>
-
-
-
-
 </body>
 </html>

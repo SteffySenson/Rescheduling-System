@@ -24,21 +24,19 @@ if(isset($_POST['submit'])){
          $_SESSION['admin_name'] = $row['name'];
          header('location:../admin/admin_page.php');
 
-      }elseif($row['user_type'] == 'user'){
-
-         $_SESSION['user_name'] = $row['name'];
-         header('location:../user/index.php');
-
       }elseif($row['user_type'] == 'faculty'){
 
          $_SESSION['user_name'] = $row['name'];
-         header('location:../faculty/index.php');
+         header('location:../faculty/faculty_page.php');
 
-      }
-     
+      }elseif($row['user_type'] == 'user'){
+
+         $_SESSION['user_name'] = $row['name'];
+         header('location:../user/user_page.php');
    }else{
       $error[] = 'incorrect email or password!';
    }
+}
 
 };
 ?>

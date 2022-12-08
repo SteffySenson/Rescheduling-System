@@ -1,3 +1,6 @@
+<?php
+include("config.php");
+?>
 <html>
     <head>
         <title>
@@ -7,6 +10,7 @@
 <body>
 <?php
 include("nav.php");
+
 ?>
 <!--<a href="reallocation.php"><h6 style= margin:20px;><button>Request for Reallocation</h6></button></a>
 -->

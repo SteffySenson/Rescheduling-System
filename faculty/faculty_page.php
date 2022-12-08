@@ -14,6 +14,13 @@ if(!isset($_SESSION['faculty_name'])){
         <title>
             Class Hour Scheduling System
         </title>
+        <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+*{
+   font-family: 'Poppins', sans-serif;
+}
+</style>
     </head>
 <body>
 <?php

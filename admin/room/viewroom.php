@@ -48,7 +48,7 @@ if(!isset($_SESSION['admin_name'])){
     }
     
     #header {
-        background-color: crimson;
+        background-color: darkorange;
         color: #fff;
     }
     
@@ -83,7 +83,7 @@ if(!isset($_SESSION['admin_name'])){
 }
 
 .btn:hover{
-   background: crimson;
+   background: darkorange;
 }
 </style>
 </head>
