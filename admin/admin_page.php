@@ -93,7 +93,7 @@ if(!isset($_SESSION['admin_name'])){
 </head>
 <body>
    <?php
-   include("index.php");
+   include("admin_home.php");
    ?>
    
 <div class="container">
