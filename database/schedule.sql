@@ -225,7 +225,7 @@ CREATE TABLE `user_form` (
 --
 
 INSERT INTO `user_form` (`id`, `name`, `email`, `password`, `user_type`, `user_no`) VALUES
-(1, 'muhammed', 'muhammed@gmail.com', '0ab617a8ee030c20188290d411a1bea1', 'user', 0),
+(1, 'steffy', 'steffy@gmail.com', '0ab617a8ee030c20188290d411a1bea1', 'user', 0),
 (2, 'Joseph Deril', 'admin@gmail.com', 'e6e061838856bf47e1de730719fb2609', 'admin', 0),
 (4, 'Naseef', 'naseef@gmail.com', '4178374196ab75881f1c8d87722df220', 'user', 200144),
 (5, 'mmmmm', 'mmm@gmail.com', '9de37a0627c25684fdd519ca84073e34', 'user', 34544);
