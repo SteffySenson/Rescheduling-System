@@ -4,7 +4,7 @@
 
 session_start();
 
-if(!isset($_SESSION['admin_name'])){
+if(!isset($_SESSION['user_name'])){
    header('location:login_form.php');
 }
 
@@ -48,7 +48,7 @@ if(!isset($_SESSION['admin_name'])){
     }
     
     #header {
-        background-color: darkorange;
+        background-color: crimson;
         color: #fff;
     }
     
@@ -83,33 +83,43 @@ if(!isset($_SESSION['admin_name'])){
 }
 
 .btn:hover{
-   background: darkorange;
+   background: crimson;
 }
 </style>
 </head>
 <body>
    
       <?php
-      $sql = "SELECT * FROM block_";
+      $ab=$_SESSION['user_name'];
+      $idd= mysqli_query($conn, "SELECT tea_id from teacher_ where tea_name='$ab' ");
+      $iddd=mysqli_fetch_array($idd);
+      $val=$iddd['tea_id'];
+      $sql = "SELECT ti.*,su.*,stu.*,de.department_name,de.department_id,se.semester_no,se.semester_id, ro.*,sea.*,bl.*,fl.* FROM department_ de,semester_ se,subject_ su, timetable_ ti, room_ ro, floor_ fl, block_ bl, seat1_ sea, teacher_ stu where ro.floor_id=fl.floor_id and fl.block_id=bl.block_id and ti.subject_code = su.subject_code and su.semester_no = se.semester_id and se.department_id = de.department_id and sea.room_id=ro.room_no and sea.tea_id=stu.tea_id  and sea.time_id=ti.time_id and stu.tea_id='$val'";
       if ($res = mysqli_query($conn, $sql)) {
       if (mysqli_num_rows($res) > 0) {
       echo "<table>";
       echo "<tr id='header'>";
-      echo "<th>Block Name</th>";
-      echo "<th>Block Description</th>";
-      echo "<th>Update</th>";
-      echo "<th>Delete</th>";
+      echo "<th>Department Name</th>";
+      echo "<th>Teacher Name</th>";
+      echo "<th>Date</th>";
+    echo "<th>Time</th>";
+      echo "<th>Block</th>";
+      echo "<th>Floor</th>";
+      echo "<th>Rooom</th>";
       echo "</tr>";
       while ($row = mysqli_fetch_array($res)) {
       echo "<tr>";
+      echo "<td>".$row['department_name']."</td>";
+      echo "<td>".$row['tea_name']."</td>";
+      echo "<td>".$row['date_']."</td>";
+    echo "<td>".$row['time_']."</td>";
       echo "<td>".$row['block_name']."</td>";
-      echo "<td>".$row['block_desc']."</td>";
-      echo "<td><a href='updateblock.php?rn=$row[block_name]&fn=$row[block_desc]' class='btn'>Update</a></td>";
-      echo "<td><a href='deleteblock.php?rn=$row[block_name]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo "<td>".$row['floor_name']."</td>";
+      echo "<td>".$row['room_no']."</td>";
       echo "</tr>";
       }
       echo "<tr>";
-      echo "<a href='../admin_page.php' class='btn'>Go Back</a>";
+      echo "<a href='../user_page.php' class='btn'>Go Back</a>";
       echo "</tr>";
       echo "</table>";
       

@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
    $bname = mysqli_real_escape_string($conn, $_POST['bname']);
    $desc = mysqli_real_escape_string($conn, $_POST['desc']);
 
-   $select = " SELECT * FROM floor_ WHERE block_id = '$bname' and floor_name = '$fname' ";
+   $select = " SELECT * FROM floor_ WHERE announcement_id = '$bname' and floor_name = '$fname' ";
 
    $result = mysqli_query($conn, $select);
 
@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
       $error[] = 'floor already exist!';
 
    }else{
-         $insert = "INSERT INTO floor_(block_id,floor_name, floor_desc) VALUES('$bname','$fname','$desc')";
+         $insert = "INSERT INTO floor_(announcement_id,floor_name, floor_desc) VALUES('$bname','$fname','$desc')";
          $res=mysqli_query($conn, $insert);
          if($res)
          {
@@ -54,13 +54,13 @@ if(isset($_POST['submit'])){
       };
       ?>
       <?php
-      $query=mysqli_query($conn,"select * from block_");
+      $query=mysqli_query($conn,"select * from announcement_");
       ?>
       <select name="bname">
-      <option value="">Select a block</option>
+      <option value="">Select a announcement</option>
          <?php
          while($row=mysqli_fetch_array($query)){
-            echo "<option value='$row[block_id]'>".$row['block_name']."</option>";
+            echo "<option value='$row[announcement_id]'>".$row['announcement_name']."</option>";
          }
          ?>
          

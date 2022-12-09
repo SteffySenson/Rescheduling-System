@@ -10,21 +10,21 @@ if(isset($_POST['submit'])){
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $desc = mysqli_real_escape_string($conn, $_POST['desc']);
  
-    $select = " SELECT * FROM block_ WHERE block_name = '$name' ";
+    $select = " SELECT * FROM announcement_ WHERE announcement_name = '$name' ";
  
     $result = mysqli_query($conn, $select);
  
     if(mysqli_num_rows($result) > 0){
  
-        $insert = " update block_ set block_name = '$name', block_desc = '$desc' where block_name = '$name' ";
+        $insert = " update announcement_ set announcement_name = '$name', announcement_desc = '$desc' where announcement_name = '$name' ";
         $res=mysqli_query($conn, $insert);
         if($res)
           {
-             $error[] = 'block updated succesfully';
+             $error[] = 'announcement updated succesfully';
           }
  
     }else{
-             $error[] = 'block name not match';
+             $error[] = 'announcement name not match';
        }
     }
  
@@ -64,7 +64,7 @@ if(isset($_POST['submit'])){
 <div class="form-container">
 
    <form action="" method="post">
-      <h3>Update Block</h3>
+      <h3>Update announcement</h3>
       <?php
       if(isset($error)){
          foreach($error as $error){
@@ -75,7 +75,7 @@ if(isset($_POST['submit'])){
       <input type="text" name="name" value="<?php echo "$rn" ?>">
       <input type="textbox" rows="3" name="desc" value="<?php echo "$fn" ?>">
       <input type="submit" name="submit" value="Submit" class="form-btn">
-      <a href='viewblock.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
+      <a href='viewannouncement.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
    </form>
 
 

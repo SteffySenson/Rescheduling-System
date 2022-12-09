@@ -64,7 +64,7 @@ if(isset($_POST['submit'])){
 <div class="form-container">
 
    <form action="" method="post">
-      <h3>Update Block</h3>
+      <h3>Update Announcement</h3>
       <?php
       if(isset($error)){
          foreach($error as $error){

@@ -11,13 +11,13 @@ if(isset($_POST['submit'])){
    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
    $desc = mysqli_real_escape_string($conn, $_POST['desc']);
  
-    $select = " SELECT * FROM floor_ WHERE block_id = '$bname' and floor_name = '$fname' ";
+    $select = " SELECT * FROM floor_ WHERE announcement_id = '$bname' and floor_name = '$fname' ";
  
     $result = mysqli_query($conn, $select);
  
     if(mysqli_num_rows($result) > 0){
  
-        $insert = " update floor_ set block_id = '$bname', floor_name = '$fname', floor_desc = '$desc' WHERE block_id = '$bname' && floor_name = '$fname' ";
+        $insert = " update floor_ set announcement_id = '$bname', floor_name = '$fname', floor_desc = '$desc' WHERE announcement_id = '$bname' && floor_name = '$fname' ";
         $res=mysqli_query($conn, $insert);
         if($res)
           {
@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
 <div class="form-container">
 
    <form action="" method="post">
-      <h3>Update Block</h3>
+      <h3>Update announcement</h3>
       <?php
       if(isset($error)){
          foreach($error as $error){
@@ -74,13 +74,13 @@ if(isset($_POST['submit'])){
       };
       ?>
       <?php
-      $query=mysqli_query($conn,"select * from block_");
+      $query=mysqli_query($conn,"select * from announcement_");
       ?>
       <select name="bname">
       <option value="<?php echo "$rn" ?>"><?php echo "$rn" ?></option>
          <?php
          while($row=mysqli_fetch_array($query)){
-            echo "<option value='$row[block_name]'>".$row['block_name']."</option>";
+            echo "<option value='$row[announcement_name]'>".$row['announcement_name']."</option>";
          }
          ?>
          

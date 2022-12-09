@@ -4,7 +4,7 @@
 
 session_start();
 
-if(!isset($_SESSION['admin_name'])){
+if(!isset($_SESSION['user_name'])){
    header('location:login_form.php');
 }
 
@@ -48,7 +48,7 @@ if(!isset($_SESSION['admin_name'])){
     }
     
     #header {
-        background-color: darkorange;
+        background-color: crimson;
         color: #fff;
     }
     
@@ -83,35 +83,39 @@ if(!isset($_SESSION['admin_name'])){
 }
 
 .btn:hover{
-   background: darkorange;
+   background: crimson;
 }
 </style>
 </head>
 <body>
    
       <?php
-      $sql = "SELECT fl.*,bl.announcement_name FROM floor_ fl,announcement_ bl where fl.announcement_id=bl.announcement_id";
+      $ab=$_SESSION['user_name'];
+      $idd= mysqli_query($conn, "SELECT stud_sem from student_ where stud_name='$ab' ");
+      $iddd=mysqli_fetch_array($idd);
+      $val=$iddd['stud_sem'];
+      $sql = "SELECT ti.*,su.*,de.department_name,de.department_id,se.semester_no FROM department_ de,semester_ se,subject_ su, timetable_ ti where ti.subject_code = su.subject_code and su.semester_no = se.semester_id and se.department_id = de.department_id and se.semester_id='$val'";
       if ($res = mysqli_query($conn, $sql)) {
       if (mysqli_num_rows($res) > 0) {
       echo "<table>";
       echo "<tr id='header'>";
-      echo "<th>announcement Name</th>";
-      echo "<th>Floor Name</th>";
-      echo "<th>Floor Description</th>";
-      echo "<th>Update</th>";
-      echo "<th>Delete</th>";
+      echo "<th>Department Name</th>";
+      echo "<th>Semester Number</th>";
+      echo "<th>Subject Name</th>";
+      echo "<th>Date</th>";
+      echo "<th>Time</th>";
       echo "</tr>";
       while ($row = mysqli_fetch_array($res)) {
       echo "<tr>";
-      echo "<td>".$row['announcement_name']."</td>";
-      echo "<td>".$row['floor_name']."</td>";
-      echo "<td>".$row['floor_desc']."</td>";
-      echo "<td><a href='updatefloor.php?rn=$row[announcement_name]&fn=$row[floor_desc]&cn=$row[floor_name]' class='btn'>Update</a></td>";
-      echo "<td><a href='deletefloor.php?rn=$row[announcement_id]&cn=$row[floor_name]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo "<td>".$row['department_name']."</td>";
+      echo "<td>".$row['semester_no']."</td>";
+      echo "<td>".$row['subject_name']."</td>";
+      echo "<td>".$row['date_']."</td>";
+      echo "<td>".$row['time_']."</td>";
       echo "</tr>";
       }
       echo "<tr>";
-      echo "<a href='../admin_page.php' class='btn'>Go Back</a>";
+      echo "<a href='../user_page.php' class='btn'>Go Back</a>";
       echo "</tr>";
       echo "</table>";
       

@@ -99,8 +99,8 @@ if(!isset($_SESSION['admin_name'])){
 <div class="container">
 
    <div class="content">
-      <a href="./block/blockadd.php"target="_top" class="btn">Add Announcement</a>
-      <a href="./block/viewblock.php"target="_top" class="btn">View Announcement</a>
+      <a href="./announcement/announcementadd.php"target="_top" class="btn">Add Announcement</a>
+      <a href="./announcement/viewannouncement.php"target="_top" class="btn">View Announcement</a>
       <a href="./floor/flooradd.php"target="_top" class="btn">Add Progress</a>
       <a href="./floor/viewfloor.php"target="_top" class="btn">View Progress</a>
       <a href="./room/roomadd.php"target="_top" class="btn">Add Class Schedule</a>
