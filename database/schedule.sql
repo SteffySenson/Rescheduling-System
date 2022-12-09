@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 10, 2022 at 03:57 AM
+-- Generation Time: Dec 09, 2022 at 06:00 AM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.1.6
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -90,6 +90,19 @@ INSERT INTO `floor_` (`floor_id`, `block_id`, `floor_name`, `floor_desc`) VALUES
 (5, 3, 'First', 'Main Block First Floor'),
 (6, 3, 'Second', 'Main Block Second Floor'),
 (7, 3, 'Third', 'Main Block Third Floor');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `progress_`
+--
+
+CREATE TABLE `progress_` (
+  `progress_id` int(11) NOT NULL,
+  `subject_code` int(11) NOT NULL,
+  `semester_no` int(11) NOT NULL,
+  `department_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -225,8 +238,9 @@ CREATE TABLE `user_form` (
 --
 
 INSERT INTO `user_form` (`id`, `name`, `email`, `password`, `user_type`, `user_no`) VALUES
-(1, 'steffy', 'steffy@gmail.com', '0ab617a8ee030c20188290d411a1bea1', 'user', 0),
+(1, 'steffy', 'steffysenson@gmail.com', '1111', 'admin', 0),
 (2, 'Joseph Deril', 'admin@gmail.com', 'e6e061838856bf47e1de730719fb2609', 'admin', 0),
+(3, 'steffy', 'steffysenson@gmail.com', '222', 'user', 0),
 (4, 'Naseef', 'naseef@gmail.com', '4178374196ab75881f1c8d87722df220', 'user', 200144),
 (5, 'mmmmm', 'mmm@gmail.com', '9de37a0627c25684fdd519ca84073e34', 'user', 34544);
 
@@ -251,6 +265,12 @@ ALTER TABLE `department_`
 --
 ALTER TABLE `floor_`
   ADD PRIMARY KEY (`floor_id`);
+
+--
+-- Indexes for table `progress_`
+--
+ALTER TABLE `progress_`
+  ADD PRIMARY KEY (`progress_id`);
 
 --
 -- Indexes for table `room_`
@@ -303,6 +323,12 @@ ALTER TABLE `department_`
 --
 ALTER TABLE `floor_`
   MODIFY `floor_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `progress_`
+--
+ALTER TABLE `progress_`
+  MODIFY `progress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `semester_`
