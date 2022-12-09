@@ -27,14 +27,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `block_`
 --
 
-CREATE TABLE `block_` (
-  `block_id` int(255) NOT NULL,
-  `block_name` varchar(255) NOT NULL,
-  `block_desc` varchar(255) NOT NULL
+CREATE TABLE `announcement_` (
+  `announcement_id` int(255) NOT NULL,
+  `announcement_name` varchar(255) NOT NULL,
+  `announcement_desc` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `block_`
+-- Dumping data for table `announcement_`
 --
 
 INSERT INTO `block_` (`block_id`, `block_name`, `block_desc`) VALUES
