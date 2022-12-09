@@ -1,5 +1,5 @@
 <?php
 
-$conn = mysqli_connect('localhost','root','','seating');
+$conn = mysqli_connect('localhost','root','','schedule');
 
 ?>
