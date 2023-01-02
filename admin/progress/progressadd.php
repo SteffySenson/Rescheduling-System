@@ -8,20 +8,20 @@ if(isset($_POST['submit'])){
    $bname = mysqli_real_escape_string($conn, $_POST['bname']);
    $desc = mysqli_real_escape_string($conn, $_POST['desc']);
 
-   $select = " SELECT * FROM floor_ WHERE announcement_id = '$bname' and floor_name = '$fname' ";
+   $select = " SELECT * FROM progress_ WHERE announcement_id = '$bname' and progress_name = '$fname' ";
 
    $result = mysqli_query($conn, $select);
 
    if(mysqli_num_rows($result) > 0){
 
-      $error[] = 'floor already exist!';
+      $error[] = 'progress already exist!';
 
    }else{
-         $insert = "INSERT INTO floor_(announcement_id,floor_name, floor_desc) VALUES('$bname','$fname','$desc')";
+         $insert = "INSERT INTO progress_(announcement_id,progress_name, progress_desc) VALUES('$bname','$fname','$desc')";
          $res=mysqli_query($conn, $insert);
          if($res)
          {
-            $error[] = 'floor added succesfully';
+            $error[] = 'progress added succesfully';
          }
       }
    }
@@ -45,7 +45,7 @@ if(isset($_POST['submit'])){
 <div class="form-container">
 
    <form action="" method="post">
-      <h3>Add Floor</h3>
+      <h3>Add progress</h3>
       <?php
       if(isset($error)){
          foreach($error as $error){
@@ -65,8 +65,8 @@ if(isset($_POST['submit'])){
          ?>
          
       </select>
-      <input type="text" name="fname" required placeholder="Enter the floor name">
-      <input type="textbox" rows="3" name="desc" required placeholder="Enter the floor description">
+      <input type="text" name="fname" required placeholder="Enter the progress name">
+      <input type="textbox" rows="3" name="desc" required placeholder="Enter the progress description">
       <input type="submit" name="submit" value="Submit" class="form-btn">
       <a href='../admin_page.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
    </form>

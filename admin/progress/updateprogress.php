@@ -11,21 +11,21 @@ if(isset($_POST['submit'])){
    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
    $desc = mysqli_real_escape_string($conn, $_POST['desc']);
  
-    $select = " SELECT * FROM floor_ WHERE announcement_id = '$bname' and floor_name = '$fname' ";
+    $select = " SELECT * FROM progress_ WHERE announcement_id = '$bname' and progress_name = '$fname' ";
  
     $result = mysqli_query($conn, $select);
  
     if(mysqli_num_rows($result) > 0){
  
-        $insert = " update floor_ set announcement_id = '$bname', floor_name = '$fname', floor_desc = '$desc' WHERE announcement_id = '$bname' && floor_name = '$fname' ";
+        $insert = " update progress_ set announcement_id = '$bname', progress_name = '$fname', progress_desc = '$desc' WHERE announcement_id = '$bname' && progress_name = '$fname' ";
         $res=mysqli_query($conn, $insert);
         if($res)
           {
-             $error[] = 'floor updated succesfully';
+             $error[] = 'progress updated succesfully';
           }
  
     }else{
-             $error[] = 'floor name not match';
+             $error[] = 'progress name not match';
        }
     }
  
@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
       <input type="text" name="fname" value="<?php echo "$cn" ?>">
       <input type="textbox" rows="3" name="desc" value="<?php echo "$fn" ?>">
       <input type="submit" name="submit" value="Submit" class="form-btn">
-      <a href='viewfloor.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
+      <a href='viewprogress.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
    </form>
 
 

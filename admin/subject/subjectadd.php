@@ -73,7 +73,7 @@ if(isset($_POST['submit'])){
       <?php
       $query=mysqli_query($conn,"select * from semester_");
       ?>
-      <select name="fname" id="floor_">
+      <select name="fname" id="progress_">
       <option value="">Select a Semester</option>
          
       </select>
@@ -89,11 +89,11 @@ $(document).ready(function(){
    $("#block_").change(function(){
       var aid= $(this).val();
       $.ajax({
-         url:'floor.php',
+         url:'progress.php',
          method:'POST',
          data: {aid:aid},
          success:function(data){
-            $("#floor_").html(data);
+            $("#progress_").html(data);
          }
       });
       });

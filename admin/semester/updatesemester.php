@@ -19,11 +19,11 @@ if(isset($_POST['submit'])){
         $res=mysqli_query($conn, $insert);
         if($res)
           {
-             $error[] = 'floor updated succesfully';
+             $error[] = 'progress updated succesfully';
           }
  
     }else{
-             $error[] = 'floor name not match';
+             $error[] = 'progress name not match';
        }
     }
  

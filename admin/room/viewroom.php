@@ -90,13 +90,13 @@ if(!isset($_SESSION['admin_name'])){
 <body>
    
       <?php
-      $sql = "SELECT rm.*,bl.block_name,fl.floor_name FROM floor_ fl,block_ bl,room_ rm where rm.block_id=bl.block_id and rm.floor_id=fl.floor_id";
+      $sql = "SELECT rm.*,bl.block_name,fl.progress_name FROM progress_ fl,block_ bl,room_ rm where rm.block_id=bl.block_id and rm.progress_id=fl.progress_id";
       if ($res = mysqli_query($conn, $sql)) {
       if (mysqli_num_rows($res) > 0) {
       echo "<table>";
       echo "<tr id='header'>";
       echo "<th>Block Name</th>";
-      echo "<th>Floor Name</th>";
+      echo "<th>progress Name</th>";
       echo "<th>Room Number</th>";
       echo "<th>Rows</th>";
       echo "<th>Columns</th>";
@@ -106,12 +106,12 @@ if(!isset($_SESSION['admin_name'])){
       while ($row = mysqli_fetch_array($res)) {
       echo "<tr>";
       echo "<td>".$row['block_name']."</td>";
-      echo "<td>".$row['floor_name']."</td>";
+      echo "<td>".$row['progress_name']."</td>";
       echo "<td>".$row['room_no']."</td>";
       echo "<td>".$row['rows_']."</td>";
       echo "<td>".$row['cols_']."</td>";
-      echo "<td><a href='updateroom.php?rn=$row[block_name]&cn=$row[floor_name]&rr=$row[room_no]&row=$row[rows_]&col=$row[cols_]' class='btn'>Update</a></td>";
-      echo "<td><a href='deleteroom.php?rn=$row[block_id]&cn=$row[floor_id]&rr=$row[room_no]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo "<td><a href='updateroom.php?rn=$row[block_name]&cn=$row[progress_name]&rr=$row[room_no]&row=$row[rows_]&col=$row[cols_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deleteroom.php?rn=$row[block_id]&cn=$row[progress_id]&rr=$row[room_no]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
       echo "</tr>";
       }
       echo "<tr>";

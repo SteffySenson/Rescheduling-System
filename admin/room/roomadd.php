@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
    $rows = mysqli_real_escape_string($conn, $_POST['rows']);
    $cols = mysqli_real_escape_string($conn, $_POST['cols']);
 
-   $select = " SELECT * FROM room_ WHERE room_no = '$rname' and block_id = '$bname' and floor_id = '$fname' ";
+   $select = " SELECT * FROM room_ WHERE room_no = '$rname' and block_id = '$bname' and progress_id = '$fname' ";
 
    $result = mysqli_query($conn, $select);
 
@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
       $error[] = 'room already exist!';
 
    }else{
-         $insert = "INSERT INTO room_(block_id,floor_id,room_no, rows_,cols_) VALUES('$bname','$fname','$rname','$rows','$cols')";
+         $insert = "INSERT INTO room_(block_id,progress_id,room_no, rows_,cols_) VALUES('$bname','$fname','$rname','$rows','$cols')";
          $res=mysqli_query($conn, $insert);
          if($res)
          {
@@ -72,10 +72,10 @@ if(isset($_POST['submit'])){
       </select>
 
       <?php
-      $query=mysqli_query($conn,"select * from floor_");
+      $query=mysqli_query($conn,"select * from progress_");
       ?>
-      <select name="fname" id="floor_">
-      <option value="">Select a floor</option>
+      <select name="fname" id="progress_">
+      <option value="">Select a progress</option>
          
       </select>
       <input type="text" name="rname" required placeholder="Enter the room name">
@@ -91,11 +91,11 @@ $(document).ready(function(){
    $("#block_").change(function(){
       var aid= $(this).val();
       $.ajax({
-         url:'floor.php',
+         url:'progress.php',
          method:'POST',
          data: {aid:aid},
          success:function(data){
-            $("#floor_").html(data);
+            $("#progress_").html(data);
          }
       });
       });

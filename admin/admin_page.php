@@ -101,8 +101,8 @@ if(!isset($_SESSION['admin_name'])){
    <div class="content">
       <a href="./announcement/announcementadd.php"target="_top" class="btn">Add Announcement</a>
       <a href="./announcement/viewannouncement.php"target="_top" class="btn">View Announcement</a>
-      <a href="./floor/flooradd.php"target="_top" class="btn">Add Progress</a>
-      <a href="./floor/viewfloor.php"target="_top" class="btn">View Progress</a>
+      <a href="./progress/progressadd.php"target="_top" class="btn">Add Progress</a>
+      <a href="./progress/viewprogress.php"target="_top" class="btn">View Progress</a>
       <a href="./room/roomadd.php"target="_top" class="btn">Add Class Schedule</a>
       <a href="./room/viewroom.php"target="_top" class="btn">View Class Schedule</a>
       <a href="./department/departmentadd.php"target="_top" class="btn">Add Department</a>
@@ -118,6 +118,10 @@ if(!isset($_SESSION['admin_name'])){
    </div>
 
 </div>
-
+<div>
+   <h1 style="padding: 300px 0;; text-align:center">
+      Class Hour Scheduling System
+</h1>
+</div>
 </body>
 </html>

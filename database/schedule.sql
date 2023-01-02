@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 09, 2022 at 06:00 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Host: 127.0.0.1
+-- Generation Time: Jan 02, 2023 at 07:57 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `block_`
+-- Table structure for table `announcement_`
 --
 
 CREATE TABLE `announcement_` (
@@ -37,10 +37,12 @@ CREATE TABLE `announcement_` (
 -- Dumping data for table `announcement_`
 --
 
-INSERT INTO `block_` (`block_id`, `block_name`, `block_desc`) VALUES
-(1, 'BCA Block', 'BCA Block'),
-(2, 'BBA Block', 'BBA Block'),
-(3, 'Main Block', 'Main Block');
+INSERT INTO `announcement_` (`announcement_id`, `announcement_name`, `announcement_desc`) VALUES
+(1, 'Maths - Test', 'Dear Student, Coming Monday, 12/12/2022, you will be having a maths test of module 1 and 2.'),
+(2, 'Mini Project - Demo', 'Good evening dear students\r\n\r\nDemo your mini project in the lab system (in your allotted system) tomorrow without fail.'),
+(3, 'Seminar Topic Submit', 'Select topic for your 5th sem seminar before 15th December 2022. '),
+(4, 'Home Work - English', 'Complete excersice 2.3 of module 4 on december 12th 2022 '),
+(5, 'Exam Instructions', ' Dont forget to bring your ID Card, Full Uniform, Hall Ticket for the exams');
 
 -- --------------------------------------------------------
 
@@ -68,41 +70,28 @@ INSERT INTO `department_` (`department_id`, `department_name`, `department_desc`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `floor_`
---
-
-CREATE TABLE `floor_` (
-  `floor_id` int(255) NOT NULL,
-  `block_id` int(255) NOT NULL,
-  `floor_name` varchar(255) NOT NULL,
-  `floor_desc` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `floor_`
---
-
-INSERT INTO `floor_` (`floor_id`, `block_id`, `floor_name`, `floor_desc`) VALUES
-(1, 1, 'First', 'BCA Block First Floor'),
-(2, 1, 'Second', 'BCA Block Second Floor'),
-(3, 2, 'First', 'BBA Block First Floor'),
-(4, 2, 'Second', 'BBA Block Second Floor'),
-(5, 3, 'First', 'Main Block First Floor'),
-(6, 3, 'Second', 'Main Block Second Floor'),
-(7, 3, 'Third', 'Main Block Third Floor');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `progress_`
 --
 
 CREATE TABLE `progress_` (
-  `progress_id` int(11) NOT NULL,
-  `subject_code` int(11) NOT NULL,
-  `semester_no` int(11) NOT NULL,
-  `department_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `progress_id` int(255) NOT NULL,
+  `block_id` int(255) NOT NULL,
+  `progress_name` varchar(255) NOT NULL,
+  `progress_desc` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `progress_`
+--
+
+INSERT INTO `progress_` (`progress_id`, `block_id`, `progress_name`, `progress_desc`) VALUES
+(1, 1, 'First', 'BCA Block First progress'),
+(2, 1, 'Second', 'BCA Block Second progress'),
+(3, 2, 'First', 'BBA Block First progress'),
+(4, 2, 'Second', 'BBA Block Second progress'),
+(5, 3, 'First', 'Main Block First progress'),
+(6, 3, 'Second', 'Main Block Second progress'),
+(7, 3, 'Third', 'Main Block Third progress');
 
 -- --------------------------------------------------------
 
@@ -112,7 +101,7 @@ CREATE TABLE `progress_` (
 
 CREATE TABLE `room_` (
   `block_id` int(255) NOT NULL,
-  `floor_id` int(255) NOT NULL,
+  `progress_id` int(255) NOT NULL,
   `room_no` int(255) NOT NULL,
   `rows_` int(255) NOT NULL,
   `cols_` int(255) NOT NULL
@@ -122,7 +111,7 @@ CREATE TABLE `room_` (
 -- Dumping data for table `room_`
 --
 
-INSERT INTO `room_` (`block_id`, `floor_id`, `room_no`, `rows_`, `cols_`) VALUES
+INSERT INTO `room_` (`block_id`, `progress_id`, `room_no`, `rows_`, `cols_`) VALUES
 (3, 5, 101, 6, 5),
 (3, 5, 102, 6, 5),
 (3, 6, 201, 6, 5),
@@ -194,8 +183,18 @@ CREATE TABLE `student_` (
 -- Dumping data for table `student_`
 --
 
-INSERT INTO `student_` (`stud_id`, `stud_name`, `stud_dep`, `stud_sem`, `stud_phone`, `stud_email`) VALUES
-(200144, 'Naseef', '1', '1', '9846363656', 'naseef@gmail.com');
+INSERT INTO `student_` (`stud_id`, `stud_name`, `stud_sem`, `stud_phone`, `stud_email`) VALUES
+(200140, 'Mahin', '1', '9999999999', 'mahin@gmail.com'),
+(200141, 'Mirsana', '1', '9999999999', 'mirsana@gmail.com'),
+(200142, 'Sameem', '1', '9999999999', 'sameem@gmail.com'),
+(200143, 'Monisha', '1', '9999999999', 'monisha@gmail.com'),
+(200144, 'Muhammed', '1', '9999999999', 'muhammed@gmail.com'),
+(200145, 'Hafiz', '1', '9999999999', 'hafiz@gmail.com'),
+(300101, 'Abdullah', '7', '9999999999', 'abdullah@gmail.com'),
+(300102, 'Abhishek', '7', '9999999999', 'abhishek@gmail.com'),
+(300103, 'Adhila', '7', '9999999999', 'adhila@gmail.com'),
+(300104, 'Ansila', '7', '9999999999', 'ansila@gmail.com'),
+(300105, 'Anugraha', '7', '9999999999', 'anugraha@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -221,6 +220,33 @@ INSERT INTO `subject_` (`subject_code`, `department_id`, `semester_no`, `subject
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `teacher_`
+--
+
+CREATE TABLE `teacher_` (
+  `tea_id` int(255) NOT NULL,
+  `tea_name` varchar(255) NOT NULL,
+  `tea_dep` varchar(255) NOT NULL,
+  `tea_phone` varchar(255) NOT NULL,
+  `tea_email` varchar(255) NOT NULL,
+  `user_type` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `teacher_`
+--
+
+INSERT INTO `teacher_` (`tea_id`, `tea_name`, `tea_dep`, `tea_phone`, `tea_email`, `user_type`) VALUES
+(101, 'Jaseena', '1', '9999999999', 'jaseena@gmail.com', 'teacher'),
+(102, 'Leena', '1', '9999999999', 'leena@gmail.com', 'teacher'),
+(103, 'Jasir', '1', '9999999999', 'jasir@gmail.com', 'teacher'),
+(201, 'Sopna', '2', '9999999999', 'sopna@gmail.com', 'teacher'),
+(202, 'Rafeeqa', '2', '9999999999', 'rafeeqa@gmail.com', 'teacher'),
+(203, 'Razeena', '2', '9999999999', 'razeena@gmail.com', 'teacher');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_form`
 --
 
@@ -238,33 +264,40 @@ CREATE TABLE `user_form` (
 --
 
 INSERT INTO `user_form` (`id`, `name`, `email`, `password`, `user_type`, `user_no`) VALUES
-(1, 'steffy', 'steffysenson@gmail.com', '1111', 'admin', 0),
 (2, 'Joseph Deril', 'admin@gmail.com', 'e6e061838856bf47e1de730719fb2609', 'admin', 0),
-(3, 'steffy', 'steffysenson@gmail.com', '222', 'user', 0),
-(4, 'Naseef', 'naseef@gmail.com', '4178374196ab75881f1c8d87722df220', 'user', 200144),
-(5, 'mmmmm', 'mmm@gmail.com', '9de37a0627c25684fdd519ca84073e34', 'user', 34544);
+(18, 'Mahin', 'mahin@gmail.com', '14485d6eff7907e7d634105291aa3353', 'user', 200140),
+(19, 'Mirsana', 'mirsana@gmail.com', '70dfb4024456686fe71de97e9ce461fc', 'user', 200141),
+(20, 'Sameem', 'sameem@gmail.com', 'd19d8e86f4b9385d9ca94957cbd8a11e', 'user', 200142),
+(21, 'Monisha', 'monisha@gmail.com', 'a8e428e177c87bab649c49be08496a35', 'user', 200143),
+(22, 'Muhammed', 'muhammed@gmail.com', 'ed405bb756337097a01d20cc307949fe', 'user', 200144),
+(23, 'Hafiz', 'hafiz@gmail.com', '74e4ceb95969f51f989c326239021269', 'user', 200145),
+(24, 'Abdullah', 'abdullah@gmail.com', '82721219beca92ac3998937d8b8bb837', 'user', 300101),
+(25, 'Abhishek', 'abhishek@gmail.com', 'bc7234677f4b384298bbd6dd7991fbeb', 'user', 300102),
+(26, 'Adhila', 'adhila@gmail.com', '02fc1cddbf20743a64497ef6a7e727c5', 'user', 300103),
+(27, 'Ansila', 'ansila@gmail.com', '44e10abd1be21c95f8b0fe372dc0ab00', 'user', 300104),
+(28, 'Anugraha', 'anugraha@gmail.com', '8a56b09d2b5fee50c74286ab9142be8e', 'user', 300105),
+(29, 'Jaseena', 'jaseena@gmail.com', 'be971d5fe274da24da8a44ed83740602', 'teacher', 101),
+(30, 'Leena', 'leena@gmail.com', '8914482b88897299046fdb90b937687a', 'teacher', 102),
+(31, 'Jasir', 'jasir@gmail.com', '6f7ddb324a0bfd1a1aab0ed47a454b4f', 'teacher', 103),
+(32, 'Sopna', 'sopna@gmail.com', '9707c9cf4e06f825bbb9af47780dd78e', 'teacher', 201),
+(33, 'Rafeeqa', 'rafeeqa@gmail.com', '203339ef1a1ae519dd58727d7ddc5108', 'teacher', 202),
+(34, 'Razeena', 'razeena@gmail.com', 'eeeab839cfe735194f5a0c7bd0f77d32', 'teacher', 203);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `block_`
+-- Indexes for table `announcement_`
 --
-ALTER TABLE `block_`
-  ADD PRIMARY KEY (`block_id`);
+ALTER TABLE `announcement_`
+  ADD PRIMARY KEY (`announcement_id`);
 
 --
 -- Indexes for table `department_`
 --
 ALTER TABLE `department_`
   ADD PRIMARY KEY (`department_id`);
-
---
--- Indexes for table `floor_`
---
-ALTER TABLE `floor_`
-  ADD PRIMARY KEY (`floor_id`);
 
 --
 -- Indexes for table `progress_`
@@ -307,10 +340,10 @@ ALTER TABLE `user_form`
 --
 
 --
--- AUTO_INCREMENT for table `block_`
+-- AUTO_INCREMENT for table `announcement_`
 --
-ALTER TABLE `block_`
-  MODIFY `block_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `announcement_`
+  MODIFY `announcement_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `department_`
@@ -319,16 +352,10 @@ ALTER TABLE `department_`
   MODIFY `department_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `floor_`
---
-ALTER TABLE `floor_`
-  MODIFY `floor_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT for table `progress_`
 --
 ALTER TABLE `progress_`
-  MODIFY `progress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `progress_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `semester_`
@@ -340,7 +367,7 @@ ALTER TABLE `semester_`
 -- AUTO_INCREMENT for table `user_form`
 --
 ALTER TABLE `user_form`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
