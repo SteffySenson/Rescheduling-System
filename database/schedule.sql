@@ -75,8 +75,7 @@ INSERT INTO `department_` (`department_id`, `department_name`, `department_desc`
 
 CREATE TABLE `progress_` (
   `progress_id` int(255) NOT NULL,
-  `block_id` int(255) NOT NULL,
-  `progress_name` varchar(255) NOT NULL,
+  `progress_percent` varchar(255) NOT NULL,
   `progress_desc` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -84,14 +83,12 @@ CREATE TABLE `progress_` (
 -- Dumping data for table `progress_`
 --
 
-INSERT INTO `progress_` (`progress_id`, `block_id`, `progress_name`, `progress_desc`) VALUES
-(1, 1, 'First', 'BCA Block First progress'),
-(2, 1, 'Second', 'BCA Block Second progress'),
-(3, 2, 'First', 'BBA Block First progress'),
-(4, 2, 'Second', 'BBA Block Second progress'),
-(5, 3, 'First', 'Main Block First progress'),
-(6, 3, 'Second', 'Main Block Second progress'),
-(7, 3, 'Third', 'Main Block Third progress');
+INSERT INTO `progress_` (`progress_id`, `progress_percent`, `progress_desc`) VALUES
+(1, '40%', 'Module 1 completed. Assigment Submitted'),
+(2, '50%', 'Module 2 completed.'),
+(3, '70%', 'Module 4 completed. Assigment Submitted'),
+(4, '30%', 'Module 1 completed.'),
+(5, '60%', 'Module 3 completed. Assigment Submitted');
 
 -- --------------------------------------------------------
 
@@ -210,12 +207,17 @@ CREATE TABLE `subject_` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `subject_`
+-- Dumping data for table `subject_` TO CHANGE
 --
 
 INSERT INTO `subject_` (`subject_code`, `department_id`, `semester_no`, `subject_name`) VALUES
-('BCA0101', 1, 1, 'Programming in C'),
-('Mathematics', 1, 1, 'Maths');
+('BBA0101', 7, 'Business Economics'),
+('BBA0102', 7, 'Management Accounting'),
+('BBA0103', 7, 'Marketing Management'),
+('BCA0101', 17, 'Fundamentals of Computer'),
+('BCA0102', 17, 'C Programming'),
+('BCA0103', 17, 'Statistics'),
+('bca0202', 18, 'Maths');
 
 -- --------------------------------------------------------
 

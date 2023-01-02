@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
    $bname = mysqli_real_escape_string($conn, $_POST['bname']);
    $desc = mysqli_real_escape_string($conn, $_POST['desc']);
 
-   $select = " SELECT * FROM progress_ WHERE announcement_id = '$bname' and progress_name = '$fname' ";
+   $select = " SELECT * FROM progress_ WHERE subject_code = '$bname' and progress_name = '$fname' ";
 
    $result = mysqli_query($conn, $select);
 
@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
       $error[] = 'progress already exist!';
 
    }else{
-         $insert = "INSERT INTO progress_(announcement_id,progress_name, progress_desc) VALUES('$bname','$fname','$desc')";
+         $insert = "INSERT INTO progress_(subject_code, progress_name, progress_desc) VALUES('$bname','$fname','$desc')";
          $res=mysqli_query($conn, $insert);
          if($res)
          {
@@ -54,18 +54,18 @@ if(isset($_POST['submit'])){
       };
       ?>
       <?php
-      $query=mysqli_query($conn,"select * from announcement_");
+      $query=mysqli_query($conn,"select * from subject_");
       ?>
       <select name="bname">
-      <option value="">Select a announcement</option>
+      <option value="">Select a subject</option>
          <?php
          while($row=mysqli_fetch_array($query)){
-            echo "<option value='$row[announcement_id]'>".$row['announcement_name']."</option>";
+            echo "<option value='$row[subject_code]'>".$row['subject_name']."</option>";
          }
          ?>
          
       </select>
-      <input type="text" name="fname" required placeholder="Enter the progress name">
+      <input type="text" name="fname" required placeholder="Enter the progress percent">
       <input type="textbox" rows="3" name="desc" required placeholder="Enter the progress description">
       <input type="submit" name="submit" value="Submit" class="form-btn">
       <a href='../admin_page.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
