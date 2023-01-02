@@ -60,7 +60,7 @@ if(isset($_POST['submit'])){
       <?php
       $query=mysqli_query($conn,"select * from department_");
       ?>
-      <select name="bname" id="block_">
+      <select name="bname" id="department_">
       <option value="">Select a Department</option>
          <?php
          while($row=mysqli_fetch_array($query)){
@@ -73,7 +73,7 @@ if(isset($_POST['submit'])){
       <?php
       $query=mysqli_query($conn,"select * from semester_");
       ?>
-      <select name="fname" id="progress_">
+      <select name="fname" id="semester_">
       <option value="">Select a Semester</option>
          
       </select>

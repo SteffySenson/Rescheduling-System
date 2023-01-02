@@ -90,24 +90,24 @@ if(!isset($_SESSION['admin_name'])){
 <body>
    
       <?php
-      $sql = "SELECT fl.*,bl.announcement_name FROM progress_ fl,announcement_ bl where fl.announcement_id=bl.announcement_id";
+      $sql = "SELECT * FROM progress_";
       if ($res = mysqli_query($conn, $sql)) {
       if (mysqli_num_rows($res) > 0) {
       echo "<table>";
       echo "<tr id='header'>";
-      echo "<th>announcement Name</th>";
-      echo "<th>progress Name</th>";
-      echo "<th>progress Description</th>";
+      echo "<th>Subject Name</th>";
+      echo "<th>Progress Percent</th>";
+      echo "<th>Progress Description</th>";
       echo "<th>Update</th>";
       echo "<th>Delete</th>";
       echo "</tr>";
       while ($row = mysqli_fetch_array($res)) {
       echo "<tr>";
-      echo "<td>".$row['announcement_name']."</td>";
-      echo "<td>".$row['progress_name']."</td>";
+      echo "<td>".$row['subject_name']."</td>";
+      echo "<td>".$row['progress_percent']."</td>";
       echo "<td>".$row['progress_desc']."</td>";
-      echo "<td><a href='updateprogress.php?rn=$row[announcement_name]&fn=$row[progress_desc]&cn=$row[progress_name]' class='btn'>Update</a></td>";
-      echo "<td><a href='deleteprogress.php?rn=$row[announcement_id]&cn=$row[progress_name]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo "<td><a href='updateprogress.php?rn=$row[subject_name]&fn=$row[progress_desc]&cn=$row[progress_percent]' class='btn'>Update</a></td>";
+      echo "<td><a href='deleteprogress.php?rn=$row[subject_name]&cn=$row[progress_id]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
       echo "</tr>";
       }
       echo "<tr>";

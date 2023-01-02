@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
    $bname = mysqli_real_escape_string($conn, $_POST['bname']);
    $desc = mysqli_real_escape_string($conn, $_POST['desc']);
 
-   $select = " SELECT * FROM progress_ WHERE subject_code = '$bname' and progress_name = '$fname' ";
+   $select = " SELECT * FROM progress_ WHERE subject_name = '$bname'";
 
    $result = mysqli_query($conn, $select);
 
@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
       $error[] = 'progress already exist!';
 
    }else{
-         $insert = "INSERT INTO progress_(subject_code, progress_name, progress_desc) VALUES('$bname','$fname','$desc')";
+         $insert = "INSERT INTO progress_(subject_name, progress_percent, progress_desc) VALUES('$bname','$fname','$desc')";
          $res=mysqli_query($conn, $insert);
          if($res)
          {
@@ -60,7 +60,7 @@ if(isset($_POST['submit'])){
       <option value="">Select a subject</option>
          <?php
          while($row=mysqli_fetch_array($query)){
-            echo "<option value='$row[subject_code]'>".$row['subject_name']."</option>";
+            echo "<option value='$row[subject_name]'>".$row['subject_name']."</option>";
          }
          ?>
          

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2023 at 07:57 PM
+-- Generation Time: Jan 02, 2023 at 11:35 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -75,6 +75,7 @@ INSERT INTO `department_` (`department_id`, `department_name`, `department_desc`
 
 CREATE TABLE `progress_` (
   `progress_id` int(255) NOT NULL,
+  `subject_code` varchar(255) NOT NULL,
   `progress_percent` varchar(255) NOT NULL,
   `progress_desc` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -83,12 +84,12 @@ CREATE TABLE `progress_` (
 -- Dumping data for table `progress_`
 --
 
-INSERT INTO `progress_` (`progress_id`, `subject_name`, `progress_percent`, `progress_desc`) VALUES
-(1, 'CPP', '40%', 'Module 1 completed. Assigment Submitted'),
-(2, 'DBMS', '50%', 'Module 2 completed.'),
-(3, 'Statistics', '70%', 'Module 4 completed. Assigment Submitted'),
-(4, 'Maths', '30%', 'Module 1 completed.'),
-(5, 'COA', '60%', 'Module 3 completed. Assigment Submitted');
+INSERT INTO `progress_` (`progress_id`, `subject_code`, `progress_percent`, `progress_desc`) VALUES
+(1, '', '40%', 'Module 1 completed. Assigment Submitted'),
+(2, '', '50%', 'Module 2 completed.'),
+(3, '', '70%', 'Module 4 completed. Assigment Submitted'),
+(4, '', '30%', 'Module 1 completed.'),
+(5, '', '60%', 'Module 3 completed. Assigment Submitted');
 
 -- --------------------------------------------------------
 
@@ -180,18 +181,18 @@ CREATE TABLE `student_` (
 -- Dumping data for table `student_`
 --
 
-INSERT INTO `student_` (`stud_id`, `stud_name`, `stud_sem`, `stud_phone`, `stud_email`) VALUES
-(200140, 'Mahin', '1', '9999999999', 'mahin@gmail.com'),
-(200141, 'Mirsana', '1', '9999999999', 'mirsana@gmail.com'),
-(200142, 'Sameem', '1', '9999999999', 'sameem@gmail.com'),
-(200143, 'Monisha', '1', '9999999999', 'monisha@gmail.com'),
-(200144, 'Muhammed', '1', '9999999999', 'muhammed@gmail.com'),
-(200145, 'Hafiz', '1', '9999999999', 'hafiz@gmail.com'),
-(300101, 'Abdullah', '7', '9999999999', 'abdullah@gmail.com'),
-(300102, 'Abhishek', '7', '9999999999', 'abhishek@gmail.com'),
-(300103, 'Adhila', '7', '9999999999', 'adhila@gmail.com'),
-(300104, 'Ansila', '7', '9999999999', 'ansila@gmail.com'),
-(300105, 'Anugraha', '7', '9999999999', 'anugraha@gmail.com');
+INSERT INTO `student_` (`stud_id`, `stud_name`, `stud_dep`, `stud_sem`, `stud_phone`, `stud_email`) VALUES
+(200140, 'Mahin', '', '1', '9999999999', 'mahin@gmail.com'),
+(200141, 'Mirsana', '', '1', '9999999999', 'mirsana@gmail.com'),
+(200142, 'Sameem', '', '1', '9999999999', 'sameem@gmail.com'),
+(200143, 'Monisha', '', '1', '9999999999', 'monisha@gmail.com'),
+(200144, 'Muhammed', '', '1', '9999999999', 'muhammed@gmail.com'),
+(200145, 'Hafiz', '', '1', '9999999999', 'hafiz@gmail.com'),
+(300101, 'Abdullah', '', '7', '9999999999', 'abdullah@gmail.com'),
+(300102, 'Abhishek', '', '7', '9999999999', 'abhishek@gmail.com'),
+(300103, 'Adhila', '', '7', '9999999999', 'adhila@gmail.com'),
+(300104, 'Ansila', '', '7', '9999999999', 'ansila@gmail.com'),
+(300105, 'Anugraha', '', '7', '9999999999', 'anugraha@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -207,17 +208,18 @@ CREATE TABLE `subject_` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `subject_` TO CHANGE
+-- Dumping data for table `subject_`
 --
 
 INSERT INTO `subject_` (`subject_code`, `department_id`, `semester_no`, `subject_name`) VALUES
-('BBA0101', 7, 'Business Economics'),
-('BBA0102', 7, 'Management Accounting'),
-('BBA0103', 7, 'Marketing Management'),
-('BCA0101', 17, 'Fundamentals of Computer'),
-('BCA0102', 17, 'C Programming'),
-('BCA0103', 17, 'Statistics'),
-('bca0202', 18, 'Maths');
+('BCA0101', 1, 1, 'Programming in C'),
+('BCA0102', 1, 2, 'COA'),
+('BCA0103', 1, 2, 'DBMS'),
+('BCA0104', 1, 2, 'LAB'),
+('BCA0105', 1, 2, 'Statistics'),
+('BCA0106', 1, 2, 'CPP'),
+('BCA0107', 1, 2, 'English'),
+('BCA0108', 1, 1, 'Maths');
 
 -- --------------------------------------------------------
 
@@ -345,7 +347,7 @@ ALTER TABLE `user_form`
 -- AUTO_INCREMENT for table `announcement_`
 --
 ALTER TABLE `announcement_`
-  MODIFY `announcement_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `announcement_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `department_`
@@ -369,7 +371,7 @@ ALTER TABLE `semester_`
 -- AUTO_INCREMENT for table `user_form`
 --
 ALTER TABLE `user_form`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
