@@ -3,6 +3,7 @@
 @include 'config.php';
 
 $rn=$_GET['rn'];
+$id=$_GET['id'];
 $cn=$_GET['cn'];
 
 if(isset($_POST['submit'])){
@@ -15,15 +16,15 @@ if(isset($_POST['submit'])){
  
     if(mysqli_num_rows($result) > 0){
  
-        $insert = " update semester_ set department_id = '$bname', semester_no = '$fname' WHERE department_id = '$bname', semester_no = '$fname' ";
+        $insert = " update semester_ set semester_no = '$fname' WHERE department_id = '$bname', semester_no = '$fname' ";
         $res=mysqli_query($conn, $insert);
         if($res)
           {
-             $error[] = 'progress updated succesfully';
+             $error[] = 'semester updated succesfully';
           }
  
     }else{
-             $error[] = 'progress name not match';
+             $error[] = 'semester not match';
        }
     }
  
@@ -63,7 +64,7 @@ if(isset($_POST['submit'])){
 <div class="form-container">
 
    <form action="" method="post">
-      <h3>Update Block</h3>
+      <h3>Update Semester</h3>
       <?php
       if(isset($error)){
          foreach($error as $error){
@@ -72,13 +73,13 @@ if(isset($_POST['submit'])){
       };
       ?>
       <?php
-      $query=mysqli_query($conn,"select * from block_");
+      $query=mysqli_query($conn,"select * from department_");
       ?>
       <select name="bname">
-      <option value="<?php echo "$rn" ?>"><?php echo "$rn" ?></option>
+      <option value="<?php echo "$id" ?>"><?php echo "$rn" ?></option>
          <?php
          while($row=mysqli_fetch_array($query)){
-            echo "<option value='$row[block_name]'>".$row['block_name']."</option>";
+          //  echo "<option value='$row[department_id]'>".$row['department_id']."</option>";
          }
          ?>
          

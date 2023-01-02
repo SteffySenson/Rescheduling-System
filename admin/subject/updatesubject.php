@@ -80,7 +80,7 @@ if(isset($_POST['submit'])){
       <?php
       $query=mysqli_query($conn,"select * from department_");
       ?>
-      <select name="bname" id="block_">
+      <select name="bname" id="department_">
       <option value="<?php echo "$rn" ?>"><?php echo "$rn" ?></option>
          <?php
          while($row=mysqli_fetch_array($query)){
