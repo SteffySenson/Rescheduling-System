@@ -1,7 +1,9 @@
 <html>
     <head>
+    <link rel="stylesheet" href="css/style.css">
 <style>
 .button {
+  font-family: 'Poppins', sans-serif;
   background-color: #4CAF50;
   border: none;
   color: white;
@@ -27,6 +29,6 @@
 </style>
 </head>
 <body>
-<a href="home.php"><button type="radio" class="button button1" style="text-decoration: none;">even</button></a>
+<a href="schedule.php"><button type="radio" class="button button1" style="text-decoration: none;">even</button></a>
 </body>
 </html>

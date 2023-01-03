@@ -1,5 +1,6 @@
 <html>
     <head>
+    <link rel="stylesheet" href="css/style.css">
 <style>
 .button {
   background-color: #4CAF50;

@@ -38,7 +38,6 @@ if(!isset($_SESSION['admin_name'])){
    padding: 5px 5px;
    width: 70vh;
    margin: 0px;
-   background-color: rgba(0,0,0, 0.4);
 
 }
 
@@ -118,10 +117,17 @@ if(!isset($_SESSION['admin_name'])){
    </div>
 
 </div>
-<div>
-   <h1 style="padding: 300px 0;; text-align:center">
+
+<div class="container" style="padding: 0px 0px; margin: 200px">
+<h1 style="padding: 30px 0px; text-align:center">
       Class Hour Scheduling System
 </h1>
+   <div class="content">
+   <a href="./timetable/schedule.php"target="_top" class="btn">Add Schedule</a>
+   <a href="./timetable/schedule.php"target="_top" class="btn">View Schedule</a>
+   <a href="./timetable/schedule.php"target="_top" class="btn">Add Reallocation</a>
+   <a href="./timetable/schedule.php"target="_top" class="btn">View Reallocation</a>
+  
 </div>
 </body>
 </html>

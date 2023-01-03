@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
  
     if(mysqli_num_rows($result) > 0){
  
-        $insert = " update subject_ set department_id = '$bname', semester_no = '$fname', subject_code = '$rname', subject_name ='$rows' WHERE subject_code = '$rname' and department_id = '$bname' and semester_no = '$fname' ";
+        $insert = " update subject_ set department_id = '$bname', semester_no = '$fname', subject_code = '$rname', subject_name ='$rows' WHERE department_id = '$bname' and semester_no = '$fname' ";
         $res=mysqli_query($conn, $insert);
         if($res)
           {
@@ -67,7 +67,7 @@ if(isset($_POST['submit'])){
 <body>
 <div class="form-container">
    <form action="" method="post">
-      <h3>Update Room</h3>
+      <h3>Update Subject</h3>
       <?php
       if(isset($error)){
          foreach($error as $error){
@@ -93,7 +93,7 @@ if(isset($_POST['submit'])){
       <?php
       $query=mysqli_query($conn,"select * from semester_");
       ?>
-      <select name="fname" id="progress_">
+      <select name="fname" id="semester_">
       <option value="<?php echo "$cn" ?>"><?php echo "$cn" ?></option>  
       </select>
 

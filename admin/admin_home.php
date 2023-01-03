@@ -1,5 +1,10 @@
 <html>
     <head>
+    <style>
+    *{
+        font-family: 'Poppins', sans-serif;
+    }
+    </style>
         <title>
             Admin Panel
         </title>

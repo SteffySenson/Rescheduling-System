@@ -75,6 +75,12 @@ if(isset($_POST['submit'])){
       ?>
       <select name="fname" id="semester_">
       <option value="">Select a Semester</option>
+
+       <?php
+         while($row=mysqli_fetch_array($query)){
+            echo "<option value='$row[semester_id]'>".$row['semester_no']."</option>";
+         }
+         ?>
          
       </select>
       <input type="text" name="rname" required placeholder="Enter the subject ID">

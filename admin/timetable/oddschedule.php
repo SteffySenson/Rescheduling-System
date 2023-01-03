@@ -3,9 +3,10 @@
         <title>
             Class Schedule
         </title>
+        <link rel="stylesheet" href="css/style.css">
         <style>
             #schedule {
-              font-family: Arial, Helvetica, sans-serif;
+              font-family: 'Poppins', sans-serif;
               font-size: small;
               border-collapse: collapse;
               width: 65%;

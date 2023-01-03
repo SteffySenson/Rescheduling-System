@@ -3,20 +3,18 @@
 @include 'config.php';
 
 $rn=$_GET['rn'];
-$id=$_GET['id'];
 $cn=$_GET['cn'];
 
 if(isset($_POST['submit'])){
    $bname = mysqli_real_escape_string($conn, $_POST['bname']);
    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
  
-    $select = " SELECT * FROM semester_ WHERE department_id = '$bname' and semester_no = '$fname' ";
+    $select = " SELECT * FROM semester_ WHERE department_id = '$bname' ";
  
     $result = mysqli_query($conn, $select);
  
     if(mysqli_num_rows($result) > 0){
- 
-        $insert = " update semester_ set semester_no = '$fname' WHERE department_id = '$bname', semester_no = '$fname' ";
+        $insert = " update semester_ set department_id='$bname', semester_no ='$fname' WHERE department_id = '$bname' ";
         $res=mysqli_query($conn, $insert);
         if($res)
           {
@@ -33,14 +31,13 @@ if(isset($_POST['submit'])){
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register form</title>
+   <title>update form</title>
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
@@ -76,10 +73,10 @@ if(isset($_POST['submit'])){
       $query=mysqli_query($conn,"select * from department_");
       ?>
       <select name="bname">
-      <option value="<?php echo "$id" ?>"><?php echo "$rn" ?></option>
+      <option value="<?php echo "$rn" ?>"><?php echo "$rn" ?></option>
          <?php
          while($row=mysqli_fetch_array($query)){
-          //  echo "<option value='$row[department_id]'>".$row['department_id']."</option>";
+         // echo "<option value='$row[department_id]'>".$row['department_name']."</option>";
          }
          ?>
          

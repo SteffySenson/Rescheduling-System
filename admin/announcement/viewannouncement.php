@@ -95,8 +95,8 @@ if(!isset($_SESSION['admin_name'])){
       if (mysqli_num_rows($res) > 0) {
       echo "<table>";
       echo "<tr id='header'>";
-      echo "<th>announcement Name</th>";
-      echo "<th>announcement Description</th>";
+      echo "<th>Announcement Name</th>";
+      echo "<th>Announcement Description</th>";
       echo "<th>Update</th>";
       echo "<th>Delete</th>";
       echo "</tr>";

@@ -3,13 +3,14 @@
         <title>
             Class Schedule
         </title>
+        <link rel="stylesheet" href="css/style.css">
         <style>
             #root{
                 display: flex;
                 background-color:light blue;
             }
             #schedule {
-              font-family: Arial, Helvetica, sans-serif;
+             font-family: 'Poppins', sans-serif;
               font-size: small;
               border-collapse: collapse;
               width: 65%;
@@ -27,18 +28,31 @@
             #schedule tr:nth-child(even){background-color: #f2f2f2;}
             /*#schedule tr:hover {background-color: #ddd;}*/
             #schedule td:hover{background-color: darkgray;}
+            .btn{
+                display: inline-block;
+                padding:5px 15px;
+              /*font-size: 10px;*/
+                background: #333;
+                color:#fff;
+                margin:0 5px;
+                text-transform: capitalize;
+}
+
+.btn:hover{
+   background: darkorange;
+}
             </style>
     </head>
     <body>
+    <?php
+include("nav.php");
+?>
 
 <div>
     <table id="schedule" border="5" cellspacing="0" align="center" font-size="2">
         <!--<caption>Timetable</caption>-->
         <tr>
-            <td align="center" height="45"
-                width="150">
-                <b>DAY</b>
-            </td>
+            <td align="center" height="45" width="150"><b>DAY</b></td>
             <td align="center" height="45"
                 width="100">
                 <b>SEM</b>
@@ -69,7 +83,7 @@
             <td align="center" height="25" rowspan=3>
                 <b>MONDAY</b></td>
             <td align="center" height="25">S2</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
+            <td align="center" height="25"><a href="timetableadd.php">maths</a></td>
             <td align="center" height="25"><a href="reallocation.php">-</a></td>
             <td align="center" height="25"><a href="reallocation.php">-</a></td>
             <td align="center" height="25"><a href="reallocation.php">-</a></td>
