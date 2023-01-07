@@ -1,3 +1,14 @@
+<?php
+
+@include 'config.php';
+
+session_start();
+
+if(!isset($_SESSION['admin_name'])){
+   header('location:login_form.php');
+}
+
+?>
 <html>
     <head>
         <title>
@@ -46,177 +57,200 @@
     <body>
     <?php
 include("nav.php");
+$sql = "SELECT ti.*,su.*,de.department_name,de.department_id,se.semester_no FROM department_ de,semester_ se,subject_ su, timetable_ ti where ti.subject_code = su.subject_code and su.semester_no = se.semester_id and se.department_id = de.department_id order by de.department_name";
+if ($res = mysqli_query($conn, $sql)) {
+    if (mysqli_num_rows($res) > 0) {
+      echo " <div>";
+      echo " <table id='schedule' border='5' cellspacing='0' align='center' font-size='2'>";
+      echo " <tr>";
+      echo " <td align='center' height='45' width='150'><b>DAY</b></td>";
+      echo " <td align='center' height='45' width='100'><b>SEM</b></td>";
+      echo " <td align='center' height='45' width='100'><b>I</b></td>";
+      echo " <td align='center' height='45' width='100'><b>II</b></td>";
+      echo " <td align='center' height='45' width='100'><b>III</b></td>";
+      echo " <td align='center' height='45' width='100'><b>IV</b></td>";
+      echo " <td align='center' height='45' width='100'><b>V</b></td>";
+      echo " </tr>";
+      while ($row = mysqli_fetch_array($res)) {
+      echo " <tr>";
+      echo " <td align='center' height='25' rowspan=3>";
+      echo " <b>MONDAY</b></td>";
+      echo " <td align='center' height='25'>S2</td>";
+      echo " <td align='center' height='25'><a href='timetableadd.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25'>S4</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25'>S6</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25' rowspan=3>";
+      echo " <b>TUESDAY</b>";
+      echo " </td>";
+      echo " <td align='center' height='25'>S2</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25'>S4</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25'>S6</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25' rowspan=3>";
+      echo " <b>WEDNESDAY</b>";
+      echo " </td>";
+      echo " <td align='center' height='25'>S2</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25'>S4</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25'>S6</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25' rowspan=3>";
+      echo " <b>THURSDAY</b>";
+      echo " </td>";
+      echo " <td align='center' height='25'>S2</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25'>S4</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25'>S6</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25' rowspan=3>";
+      echo " <b>FRIDAY</b>";
+      echo " </td>";
+      echo " <td align='center' height='25'>S2</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25'>S4</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      echo " <tr>";
+      echo " <td align='center' height='25'>S6</td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['subject1']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo " <td align='center' height='25'><a href='reallocation.php'>".$row['time_']."</a></td>";
+      echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo " </tr>";
+      }
+      echo "<tr>";
+      echo "<a href='../admin/admin_page.php' class='btn'>Go Back</a>";
+      echo "</tr>";
+      echo "</table>";
+      echo " </div>";
+      include("slide.php");
+    }
+}
 ?>
-
-<div>
-    <table id="schedule" border="5" cellspacing="0" align="center" font-size="2">
-        <!--<caption>Timetable</caption>-->
-        <tr>
-            <td align="center" height="45" width="150"><b>DAY</b></td>
-            <td align="center" height="45"
-                width="100">
-                <b>SEM</b>
-            </td>
-            <td align="center" height="45"
-                width="100">
-                <b>I</b>
-            </td>
-            <td align="center" height="45"
-                width="100">
-                <b>II</b>
-            </td>
-            <td align="center" height="45"
-                width="100">
-                <b>III</b>
-            </td>
-           
-            <td align="center" height="45"
-                width="100">
-                <b>IV<br></b>
-            </td>
-            <td align="center" height="45"
-                width="100">
-                <b>V<br></b>
-            </td>
-        </tr>
-        <tr>
-            <td align="center" height="25" rowspan=3>
-                <b>MONDAY</b></td>
-            <td align="center" height="25">S2</td>
-            <td align="center" height="25"><a href="timetableadd.php">maths</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-        <td align="center" height="25">S4</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-        <td align="center" height="25">S6</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-            <td align="center" height="25" rowspan=3>
-                <b>TUESDAY</b>
-            </td>
-            <td align="center" height="25">S2</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-        <td align="center" height="25">S4</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-        <td align="center" height="25">S6</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-            <td align="center" height="25" rowspan=3>
-                <b>WEDNESDAY</b>
-            </td>
-            <td align="center" height="25">S2</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-        <td align="center" height="25">S4</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-        <td align="center" height="25">S6</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-            <td align="center" height="25" rowspan=3>
-                <b>THURSDAY</b>
-            </td>
-            <td align="center" height="25">S2</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-        <td align="center" height="25">S4</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-        <td align="center" height="25">S6</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-            <td align="center" height="25" rowspan=3>
-                <b>FRIDAY</b>
-            </td>
-            <td align="center" height="25">S2</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>  
-        <tr>
-        <td align="center" height="25">S4</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>
-        <tr>
-        <td align="center" height="25">S6</td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-            <td align="center" height="25"><a href="reallocation.php">-</a></td>
-        </tr>      
-    </table>
-    <?php
-    include("slide.php");
-    ?>
-</div>
+<script>
+function checkdelete()
+{
+  return confirm('Are you sure you want to delete?');
+}
+</script>
 </body>
 </html>

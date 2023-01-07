@@ -105,7 +105,7 @@ CREATE TABLE `room_` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `room_`
+-- Dumping data for table `room_`(CLASS SCHEDULE)
 --
 
 INSERT INTO `room_` (`block_id`, `progress_id`, `room_no`, `rows_`, `cols_`) VALUES
@@ -164,6 +164,36 @@ INSERT INTO `semester_` (`semester_id`, `department_id`, `semester_no`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `timetable_`
+--
+
+CREATE TABLE `timetable_` (
+  `time_id` int(255) NOT NULL,
+  `department_id` INT(255) NOT NULL, 
+  `semester_no` INT(255) NOT NULL, 
+  `day_` VARCHAR(255) NOT NULL, 
+  `subject1` VARCHAR(255) NOT NULL, 
+  `subject2` VARCHAR(255) NOT NULL, 
+  `subject3` VARCHAR(255) NOT NULL, 
+  `subject4` VARCHAR(255) NOT NULL, 
+  `subject5` VARCHAR(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `timetable_`
+--
+
+-- --------------------------------------------------------
+
+INSERT INTO `timetable_` (`time_id`, `department_id`, `semester_no`, `day_`, `subject1`, `subject2`, `subject3`, `subject4`, `subject5`) VALUES
+(1, '1', '2', 'MONDAY', 'C++ LAB', 'C++ LAB', 'C++ LAB', 'ENG', 'MATHS'),
+(2, '1', '2', 'TUESDAY', 'DBMS', 'COA', 'ENG', 'MATHS', 'CPP'),
+(3, '1', '2', 'WEDNESDAY', 'ENG', 'COA', 'CPP', 'MATHS', 'DBMS'),
+(4, '1', '2', 'THURSDAY', 'CPP', 'ENG', 'COA', 'DBMS', 'MATHS'),
+(5, '1', '2', 'FRIDAY', 'COA', 'DBMS', 'ENG', 'DBMS LAB', 'DBMS LAB');
+
+
+--
 -- Table structure for table `student_`
 --
 
@@ -181,10 +211,10 @@ CREATE TABLE `student_` (
 --
 
 INSERT INTO `student_` (`stud_id`, `stud_name`, `stud_sem`, `stud_phone`, `stud_email`) VALUES
-(200140, 'Mahin', '1', '9999999999', 'mahin@gmail.com'),
-(200141, 'Mirsana', '1', '9999999999', 'mirsana@gmail.com'),
-(200142, 'Sameem', '1', '9999999999', 'sameem@gmail.com'),
-(200143, 'Monisha', '1', '9999999999', 'monisha@gmail.com'),
+(200140, 'Mahin', '2', '9999999999', 'mahin@gmail.com'),
+(200141, 'Mirsana', '2', '9999999999', 'mirsana@gmail.com'),
+(200142, 'Sameem', '2', '9999999999', 'sameem@gmail.com'),
+(200143, 'Monisha', '2', '9999999999', 'monisha@gmail.com'),
 (200144, 'Muhammed', '1', '9999999999', 'muhammed@gmail.com'),
 (200145, 'Hafiz', '1', '9999999999', 'hafiz@gmail.com'),
 (300101, 'Abdullah', '7', '9999999999', 'abdullah@gmail.com'),
@@ -229,6 +259,7 @@ CREATE TABLE `teacher_` (
   `tea_id` int(255) NOT NULL,
   `tea_name` varchar(255) NOT NULL,
   `tea_dep` varchar(255) NOT NULL,
+  `subject_name` varchar(255) NOT NULL,
   `tea_phone` varchar(255) NOT NULL,
   `tea_email` varchar(255) NOT NULL,
   `user_type` varchar(255) NOT NULL
@@ -238,13 +269,13 @@ CREATE TABLE `teacher_` (
 -- Dumping data for table `teacher_`
 --
 
-INSERT INTO `teacher_` (`tea_id`, `tea_name`, `tea_dep`, `tea_phone`, `tea_email`, `user_type`) VALUES
-(101, 'Jaseena', '1', '9999999999', 'jaseena@gmail.com', 'teacher'),
-(102, 'Leena', '1', '9999999999', 'leena@gmail.com', 'teacher'),
-(103, 'Jasir', '1', '9999999999', 'jasir@gmail.com', 'teacher'),
-(201, 'Sopna', '2', '9999999999', 'sopna@gmail.com', 'teacher'),
-(202, 'Rafeeqa', '2', '9999999999', 'rafeeqa@gmail.com', 'teacher'),
-(203, 'Razeena', '2', '9999999999', 'razeena@gmail.com', 'teacher');
+INSERT INTO `teacher_` (`tea_id`, `tea_name`, `tea_dep`, `subject_name`, `tea_phone`, `tea_email`, `user_type`) VALUES
+(101, 'Jaseena', '2', 'FUNDAMENTALS OF COMPUTER', '9999999999', 'jaseena@gmail.com', 'teacher'),
+(102, 'Leena', '2', 'COA', '9999999999', 'leena@gmail.com', 'teacher'),
+(103, 'Jasir', '2', 'DBMS', '9999999999', 'jasir@gmail.com', 'teacher'),
+(201, 'Sopna', '2', 'CPP LAB', '9999999999', 'sopna@gmail.com', 'teacher'),
+(202, 'Rafeeqa', '2', 'DBMS LAB', '9999999999', 'rafeeqa@gmail.com', 'teacher'),
+(203, 'Razeena', '2', 'MATHS', '9999999999', 'razeena@gmail.com', 'teacher');
 
 -- --------------------------------------------------------
 
