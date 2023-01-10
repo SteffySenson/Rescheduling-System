@@ -75,6 +75,7 @@ INSERT INTO `department_` (`department_id`, `department_name`, `department_desc`
 
 CREATE TABLE `progress_` (
   `progress_id` int(255) NOT NULL,
+  `subject_name` varchar(255) NOT NULL,
   `progress_percent` varchar(255) NOT NULL,
   `progress_desc` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -241,13 +242,13 @@ CREATE TABLE `subject_` (
 --
 
 INSERT INTO `subject_` (`subject_code`, `department_id`, `semester_no`, `subject_name`) VALUES
-('BBA0101', 7, 'Business Economics'),
-('BBA0102', 7, 'Management Accounting'),
-('BBA0103', 7, 'Marketing Management'),
-('BCA0101', 17, 'Fundamentals of Computer'),
-('BCA0102', 17, 'C Programming'),
-('BCA0103', 17, 'Statistics'),
-('bca0202', 18, 'Maths');
+('BBA0101', 7, 2, 'Business Economics'),
+('BBA0102', 7, 2, 'Management Accounting'),
+('BBA0103', 7, 4, 'Marketing Management'),
+('BCA0101', 17, 4, 'Fundamentals of Computer'),
+('BCA0102', 17, 2, 'C Programming'),
+('BCA0103', 17, 2, 'Statistics'),
+('bca0202', 18, 2, 'Maths');
 
 -- --------------------------------------------------------
 
