@@ -102,8 +102,6 @@ if(!isset($_SESSION['admin_name'])){
       <a href="./announcement/viewannouncement.php"target="_top" class="btn">View Announcement</a>
       <a href="./progress/progressadd.php"target="_top" class="btn">Add Progress</a>
       <a href="./progress/viewprogress.php"target="_top" class="btn">View Progress</a>
-      <a href="./room/roomadd.php"target="_top" class="btn">Add Class Schedule</a>
-      <a href="./room/viewroom.php"target="_top" class="btn">View Class Schedule</a>
       <a href="./department/departmentadd.php"target="_top" class="btn">Add Department</a>
       <a href="./department/viewdepartment.php"target="_top" class="btn">View Department</a>
       <a href="./semester/semesteradd.php"target="_top" class="btn">Add Semester</a>
