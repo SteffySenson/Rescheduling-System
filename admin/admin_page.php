@@ -123,7 +123,7 @@ if(!isset($_SESSION['admin_name'])){
       Class Hour Scheduling System
 </h1>
    <div class="content">
-   <a href="./timetable/schedule.php"target="_top" class="btn">Add Schedule</a>
+   <a href="./timetable/timetableadd.php"target="_top" class="btn">Add Schedule</a>
    <a href="./timetable/schedule.php"target="_top" class="btn">View Schedule</a>
    <a href="./timetable/schedule.php"target="_top" class="btn">Add Reallocation</a>
    <a href="./timetable/schedule.php"target="_top" class="btn">View Reallocation</a>

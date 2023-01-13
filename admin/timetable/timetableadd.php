@@ -8,8 +8,6 @@ if(isset($_POST['submit'])){
    $bname = mysqli_real_escape_string($conn, $_POST['bname']);
    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
    $fubname = mysqli_real_escape_string($conn, $_POST['fubname']);
-   $date = mysqli_real_escape_string($conn, $_POST['date']);
-   $sname = mysqli_real_escape_string($conn, $_POST['sname']);
 
    $select = " SELECT * FROM timetable_ WHERE subject_code = '$fubname' ";
 
@@ -44,13 +42,13 @@ if(isset($_POST['submit'])){
    <title>register form</title>
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="form-container">
 
    <form action="" method="post">
-      <h3>Add Timetable</h3>
+      <h3>Add Class Schedule</h3>
       <?php
       if(isset($error)){
          foreach($error as $error){
@@ -83,19 +81,40 @@ if(isset($_POST['submit'])){
       $query=mysqli_query($conn,"select * from subject_");
       ?>
       <select name="fubname" id="subject_">
-      <option value="">Select a Subject</option>
+      <option value="">Select Subject 1</option>
+         
+      </select>
+      <?php
+      $query=mysqli_query($conn,"select * from subject_");
+      ?>
+      <select name="fubname" id="subject_">
+      <option value="">Select Subject 2</option>
+         
+      </select>
+      <?php
+      $query=mysqli_query($conn,"select * from subject_");
+      ?>
+      <select name="fubname" id="subject_">
+      <option value="">Select Subject 3</option>
+         
+      </select>
+      <?php
+      $query=mysqli_query($conn,"select * from subject_");
+      ?>
+      <select name="fubname" id="subject_">
+      <option value="">Select Subject 4</option>
+         
+      </select>
+      <?php
+      $query=mysqli_query($conn,"select * from subject_");
+      ?>
+      <select name="fubname" id="subject_">
+      <option value="">Select Subject 5</option>
          
       </select>
 
-      
-      <input type="date" name="date" required placeholder="Enter the date of exam">
-      <select name="sname">
-         <option value="">Select an option</option>
-         <option value="Forenoon">Forenoon</option>
-         <option value="Afternoon">Afternoon</option>
-      </select>
       <input type="submit" name="submit" value="Submit" class="form-btn">
-      <a href='../management/timetablemanagement.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
+      <a href='../admin_page.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
    </form>
 </div>
 
