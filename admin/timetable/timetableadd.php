@@ -59,7 +59,7 @@ if(isset($_POST['submit'])){
       <?php
       $query=mysqli_query($conn,"select * from department_");
       ?>
-      <select name="bname" id="block_">
+      <select name="bname" id="dep_">
       <option value="">Select a Department</option>
          <?php
          while($row=mysqli_fetch_array($query)){
@@ -78,37 +78,37 @@ if(isset($_POST['submit'])){
       </select>
 
       <?php
-      $query=mysqli_query($conn,"select * from subject_");
+      $query=mysqli_query($conn,"select * from subject_ ");
       ?>
-      <select name="fubname" id="subject_">
+      <select name="fubname" id="subject1_">
       <option value="">Select Subject 1</option>
          
       </select>
       <?php
       $query=mysqli_query($conn,"select * from subject_");
       ?>
-      <select name="fubname" id="subject_">
+      <select name="fubname" id="subject2_">
       <option value="">Select Subject 2</option>
          
       </select>
       <?php
       $query=mysqli_query($conn,"select * from subject_");
       ?>
-      <select name="fubname" id="subject_">
+      <select name="fubname" id="subject3_">
       <option value="">Select Subject 3</option>
          
       </select>
       <?php
       $query=mysqli_query($conn,"select * from subject_");
       ?>
-      <select name="fubname" id="subject_">
+      <select name="fubname" id="subject4_">
       <option value="">Select Subject 4</option>
          
       </select>
       <?php
       $query=mysqli_query($conn,"select * from subject_");
       ?>
-      <select name="fubname" id="subject_">
+      <select name="fubname" id="subject5_">
       <option value="">Select Subject 5</option>
          
       </select>
@@ -120,7 +120,7 @@ if(isset($_POST['submit'])){
 
 <script type="text/javascript">
 $(document).ready(function(){
-   $("#block_").change(function(){
+   $("#dep_").change(function(){
       var aid= $(this).val();
       $.ajax({
          url:'floor.php',
@@ -135,14 +135,70 @@ $(document).ready(function(){
 
 $(document).ready(function(){
    $("#floor_").change(function(){
-      var said= $('#block_').val();
+      var said= $('#dep_').val();
       var vaid= $(this).val();
       $.ajax({
          url:'floor.php',
          method:'POST',
          data: {said:said,vaid:vaid},
          success:function(data){
-            $("#subject_").html(data);
+            $("#subject1_").html(data);
+         }
+      });
+      });
+   });
+   $(document).ready(function(){
+   $("#floor_").change(function(){
+      var said= $('#dep_').val();
+      var vaid= $(this).val();
+      $.ajax({
+         url:'floor.php',
+         method:'POST',
+         data: {said:said,vaid:vaid},
+         success:function(data){
+            $("#subject2_").html(data);
+         }
+      });
+      });
+   });
+   $(document).ready(function(){
+   $("#floor_").change(function(){
+      var said= $('#dep_').val();
+      var vaid= $(this).val();
+      $.ajax({
+         url:'floor.php',
+         method:'POST',
+         data: {said:said,vaid:vaid},
+         success:function(data){
+            $("#subject3_").html(data);
+         }
+      });
+      });
+   });
+   $(document).ready(function(){
+   $("#floor_").change(function(){
+      var said= $('#dep_').val();
+      var vaid= $(this).val();
+      $.ajax({
+         url:'floor.php',
+         method:'POST',
+         data: {said:said,vaid:vaid},
+         success:function(data){
+            $("#subject4_").html(data);
+         }
+      });
+      });
+   });
+   $(document).ready(function(){
+   $("#floor_").change(function(){
+      var said= $('#dep_').val();
+      var vaid= $(this).val();
+      $.ajax({
+         url:'floor.php',
+         method:'POST',
+         data: {said:said,vaid:vaid},
+         success:function(data){
+            $("#subject5_").html(data);
          }
       });
       });

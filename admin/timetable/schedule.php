@@ -71,7 +71,7 @@ if ($res = mysqli_query($conn, $sql)) {
       echo " <td align='center' height='45' width='100'><b>IV</b></td>";
       echo " <td align='center' height='45' width='100'><b>V</b></td>";
       echo " </tr>";
-      //while ($row = mysqli_fetch_array($res)) {
+      while ($row = mysqli_fetch_array($res)) {
       echo " <tr>";
       echo " <td align='center' height='25' rowspan=3>";
       echo " <b>MONDAY</b></td>";
@@ -236,7 +236,7 @@ if ($res = mysqli_query($conn, $sql)) {
       echo "<td><a href='updatetimetable.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]&date=$row[date_]&time=$row[time_]' class='btn'>Update</a></td>";
       echo "<td><a href='deletetimetable.php?rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
       echo " </tr>";
-     // }
+     }
       echo "<tr>";
       echo "<a href='../admin/admin_page.php' class='btn'>Go Back</a>";
       echo "</tr>";
