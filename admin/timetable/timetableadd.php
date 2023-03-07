@@ -83,8 +83,13 @@ function course4(){
       <?php
       $query=mysqli_query($conn,"select * from department_");
       ?>
+<<<<<<< HEAD
       <!--<select name="bname" id="block_" onchange="subject(this.value)">
       <option value="0">Select a Department</option>
+=======
+      <select name="bname" id="dep_">
+      <option value="">Select a Department</option>
+>>>>>>> 5356dc2eedd34ce2114b5617c89275335af9bbc6
          <?php
         // while($row=mysqli_fetch_array($query)){
            // echo "<option value='$row[department_id]'>".$row['department_name']."</option>";
@@ -120,37 +125,37 @@ function course4(){
       </select>
 
       <?php
-      $query=mysqli_query($conn,"select * from subject_");
+      $query=mysqli_query($conn,"select * from subject_ ");
       ?>
-      <select name="fubname" id="subject_">
+      <select name="fubname" id="subject1_">
       <option value="">Select Subject 1</option>
          
       </select>
       <?php
       $query=mysqli_query($conn,"select * from subject_");
       ?>
-      <select name="fubname" id="subject_">
+      <select name="fubname" id="subject2_">
       <option value="">Select Subject 2</option>
          
       </select>
       <?php
       $query=mysqli_query($conn,"select * from subject_");
       ?>
-      <select name="fubname" id="subject_">
+      <select name="fubname" id="subject3_">
       <option value="">Select Subject 3</option>
          
       </select>
       <?php
       $query=mysqli_query($conn,"select * from subject_");
       ?>
-      <select name="fubname" id="subject_">
+      <select name="fubname" id="subject4_">
       <option value="">Select Subject 4</option>
          
       </select>
       <?php
       $query=mysqli_query($conn,"select * from subject_");
       ?>
-      <select name="fubname" id="subject_">
+      <select name="fubname" id="subject5_">
       <option value="">Select Subject 5</option>
          
       </select>
@@ -162,7 +167,7 @@ function course4(){
 
 <script type="text/javascript">
 $(document).ready(function(){
-   $("#block_").change(function(){
+   $("#dep_").change(function(){
       var aid= $(this).val();
       $.ajax({
          url:'floor.php',
@@ -177,14 +182,70 @@ $(document).ready(function(){
 
 $(document).ready(function(){
    $("#floor_").change(function(){
-      var said= $('#block_').val();
+      var said= $('#dep_').val();
       var vaid= $(this).val();
       $.ajax({
          url:'floor.php',
          method:'POST',
          data: {said:said,vaid:vaid},
          success:function(data){
-            $("#subject_").html(data);
+            $("#subject1_").html(data);
+         }
+      });
+      });
+   });
+   $(document).ready(function(){
+   $("#floor_").change(function(){
+      var said= $('#dep_').val();
+      var vaid= $(this).val();
+      $.ajax({
+         url:'floor.php',
+         method:'POST',
+         data: {said:said,vaid:vaid},
+         success:function(data){
+            $("#subject2_").html(data);
+         }
+      });
+      });
+   });
+   $(document).ready(function(){
+   $("#floor_").change(function(){
+      var said= $('#dep_').val();
+      var vaid= $(this).val();
+      $.ajax({
+         url:'floor.php',
+         method:'POST',
+         data: {said:said,vaid:vaid},
+         success:function(data){
+            $("#subject3_").html(data);
+         }
+      });
+      });
+   });
+   $(document).ready(function(){
+   $("#floor_").change(function(){
+      var said= $('#dep_').val();
+      var vaid= $(this).val();
+      $.ajax({
+         url:'floor.php',
+         method:'POST',
+         data: {said:said,vaid:vaid},
+         success:function(data){
+            $("#subject4_").html(data);
+         }
+      });
+      });
+   });
+   $(document).ready(function(){
+   $("#floor_").change(function(){
+      var said= $('#dep_').val();
+      var vaid= $(this).val();
+      $.ajax({
+         url:'floor.php',
+         method:'POST',
+         data: {said:said,vaid:vaid},
+         success:function(data){
+            $("#subject5_").html(data);
          }
       });
       });
