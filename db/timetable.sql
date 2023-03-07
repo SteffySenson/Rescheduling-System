@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2023 at 02:21 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Mar 07, 2023 at 11:31 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -64,7 +64,10 @@ CREATE TABLE `course` (
 
 INSERT INTO `course` (`Course_Id`, `C_Name`, `Department_Id`, `Semesters`) VALUES
 (1, 'BCA', 1, 6),
-(8, 'admins', 1, 6);
+(2, 'MCA', 1, 4),
+(3, 'MSC COMPUTER SCIENCE', 1, 4),
+(4, 'BA ENGLISH', 2, 6),
+(5, 'BVOC ANIMATION', 3, 6);
 
 -- --------------------------------------------------------
 
@@ -75,7 +78,7 @@ INSERT INTO `course` (`Course_Id`, `C_Name`, `Department_Id`, `Semesters`) VALUE
 CREATE TABLE `department` (
   `Department_Id` int(5) NOT NULL,
   `D_Name` varchar(50) NOT NULL,
-  `HOD` int(5) NOT NULL
+  `HOD` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -83,7 +86,9 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`Department_Id`, `D_Name`, `HOD`) VALUES
-(1, 'COMPUTER APPLICATIONS', 0);
+(1, 'BA ENGLISH', 'Dr. Bindhu'),
+(2, 'COMPUTER APPLICATIONS', 'Dr. Leena C S'),
+(3, 'BVOC ANIMATION', 'Mr. Ajimsha');
 
 -- --------------------------------------------------------
 
@@ -183,10 +188,27 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`Subject_Id`, `sub_code`, `S_Name`, `Course_Id`, `Sem_No`, `Teacher_Id`) VALUES
-(0, 'NILL', 'NILL', 2, 2, 123),
-(2, 'CART045', 'english', 1, 1, 1),
-(3, 'CART045', 'test', 8, 2, 1),
-(5, 'CART045', 'ok', 8, 2, 1);
+(1, 'C2S1', 'C++ LAB', 1, 2, 201),
+(2, 'C2S2', 'ENG', 1, 2, 205),
+(3, 'C2S3', 'MATHS', 1, 2, 203),
+(4, 'C2S4', 'DAA', 1, 4, 101),
+(5, 'C2S5', 'SASE', 1, 4, 205),
+(6, 'C2S6', 'LINUX', 1, 4, 203),
+(7, 'C2S7', 'PHP LAB', 1, 4, 202),
+(8, 'C2S8', 'CLOUD', 1, 6, 102),
+(9, 'C2S9', 'DM', 1, 6, 203),
+(10, 'C2S10', 'LAB', 1, 6, 201),
+(11, 'C2S11', 'DBMS', 1, 2, 103),
+(12, 'C2S12', 'COA', 1, 2, 102),
+(13, 'C2S13', 'CPP', 1, 2, 201),
+(14, 'C2S14', 'LINUX LAB', 1, 4, 202),
+(15, 'C2S15', 'PHP', 1, 4, 102),
+(16, 'C2S16', 'OR', 1, 4, 203),
+(17, 'C2S17', 'MICROPROCESSOR', 1, 4, 103),
+(18, 'C2S18', 'DBMS LAB', 1, 4, 202),
+(19, 'C2S19', 'PROJECT LAB', 1, 6, 102),
+(20, 'C2S20', 'ANDROID', 1, 6, 202);
+
 
 -- --------------------------------------------------------
 
@@ -214,7 +236,8 @@ INSERT INTO `teacher_` (`tea_id`, `tea_name`, `tea_dep`, `subject_name`, `tea_ph
 (103, 'Jasir', '2', 'DBMS', '9999999999', 'jasir@gmail.com', 'teacher'),
 (201, 'Sopna', '2', 'CPP LAB', '9999999999', 'sopna@gmail.com', 'teacher'),
 (202, 'Rafeeqa', '2', 'DBMS LAB', '9999999999', 'rafeeqa@gmail.com', 'teacher'),
-(203, 'Razeena', '2', 'MATHS', '9999999999', 'razeena@gmail.com', 'teacher');
+(203, 'Razeena', '2', 'MATHS', '9999999999', 'razeena@gmail.com', 'teacher'),
+(205, 'BINDHU', '2', 'ENG', '45982604567', 'bindhu@gmail.com', 'teacher');
 
 -- --------------------------------------------------------
 
@@ -240,8 +263,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`User_Id`, `Roll_No`, `U_Name`, `E_Mail`, `Phone_No`, `Password`, `Department_Id`, `Course_Id`, `Current_Sem`, `U_Type`) VALUES
-(1, 123, 'Deril', 'deril@gmail.com', 1234, '7b62eb85da5711d4e794eee3fe5607fb', 1, 0, 0, 'Teacher'),
-(2, 1234, 'salim', 'salim@gmail.com', 1234, 'ca6b147b8fbdd688d8ebcaa3b803c22a', 1, 0, 0, 'Teacher');
+(1, 123, 'Deril', 'deril@gmail.com', 1234, '7b62eb85da5711d4e794eee3fe5607fb', 2, 1, 4, 'Teacher'),
+(2, 1234, 'salim', 'salim@gmail.com', 1234, 'ca6b147b8fbdd688d8ebcaa3b803c22a', 2, 1, 6, 'Teacher');
 
 --
 -- Indexes for dumped tables
@@ -310,7 +333,7 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `Department_Id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Department_Id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `progress_`
