@@ -7,7 +7,7 @@ if(isset($_POST['submit'])){
    $name = mysqli_real_escape_string($conn, $_POST['name']);
    $desc = mysqli_real_escape_string($conn, $_POST['desc']);
 
-   $select = " SELECT * FROM department_ WHERE department_name = '$name' ";
+   $select = " SELECT * FROM department WHERE D_Name = '$name' ";
 
    $result = mysqli_query($conn, $select);
 
@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
       $error[] = 'department already exist!';
 
    }else{
-         $insert = "INSERT INTO department_(department_name, department_desc) VALUES('$name','$desc')";
+         $insert = "INSERT INTO department( D_Name,HOD) VALUES('$name','$desc')";
          $res=mysqli_query($conn, $insert);
          if($res)
          {
@@ -24,9 +24,6 @@ if(isset($_POST['submit'])){
          }
       }
    }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -62,8 +59,8 @@ if(isset($_POST['submit'])){
          };
       };
       ?>
-      <input type="text" name="name" required placeholder="Enter the department name">
-      <input type="textbox" rows="3" name="desc" required placeholder="Enter the department description">
+      <input type="text" name="name" required placeholder="Enter the department name:">
+      <input type="text"  name="desc" required placeholder="Enter HOD's Name:">
       <input type="submit" name="submit" value="Submit" class="form-btn">
       <a href='../admin_page.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
    </form>

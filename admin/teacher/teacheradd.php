@@ -6,15 +6,12 @@ if(isset($_POST['submit'])){
 
    $name = mysqli_real_escape_string($conn, $_POST['name']);
    $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $bname = mysqli_real_escape_string($conn, $_POST['bname']);
-   $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+   $dname = mysqli_real_escape_string($conn, $_POST['dname']);
    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
    $rname = mysqli_real_escape_string($conn, $_POST['rname']);
    $pass = md5($_POST['password']);
-   $cpass = md5($_POST['cpassword']);
-   $user_type = $_POST['user_type'];
 
-   $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
+   $select = " SELECT * FROM users WHERE E_Mail = '$email' && Password = '$pass' ";
 
    $result = mysqli_query($conn, $select);
 
@@ -24,15 +21,10 @@ if(isset($_POST['submit'])){
 
    }else{
 
-      if($pass != $cpass){
-         $error[] = 'password not matched!';
-      }else{
-         $insert = "INSERT INTO user_form(name, email, password, user_type,user_no) VALUES('$name','$email','$pass','$user_type',$rname)";
-         $insert1 = "INSERT INTO student_(stud_id, stud_name, stud_dep, stud_sem, stud_phone, stud_email) VALUES('$rname','$name','$bname','$fname','$phone','$email')";
+         $insert = "INSERT INTO users(Roll_No, U_Name, E_Mail, Phone_No,password,Department_Id,U_Type) VALUES('$rname','$name','$email','$phone','$pass','$dname','Teacher')";      
          mysqli_query($conn, $insert);
-         mysqli_query($conn, $insert1);
          $error[] = 'user added succesfully!';
-      }
+    
    }
 
 };
@@ -67,35 +59,24 @@ if(isset($_POST['submit'])){
          };
       };
       ?>
-      <input type="text" name="rname" required placeholder="enter your register number">
-      <input type="text" name="name" required placeholder="enter your name">
+      <input type="text" name="rname" required placeholder="enter register number">
+      <input type="text" name="name" required placeholder="enter name">
       <?php
-      $query=mysqli_query($conn,"select * from department_");
+      $query=mysqli_query($conn,"select * from department");
       ?>
-      <select name="bname" id="block_">
+      <select name="dname" id="block_">
       <option value="">Select a Department</option>
          <?php
          while($row=mysqli_fetch_array($query)){
-            echo "<option value='$row[department_id]'>".$row['department_name']."</option>";
+            echo "<option value='$row[Department_Id]'>".$row['D_Name']."</option>";
          }
          ?>
-         
-      </select>
-
-      <?php
-      $query=mysqli_query($conn,"select * from semester_");
-      ?>
-      <select name="fname" id="progress_">
-      <option value="">Select a Semester</option>
          
       </select>
       <input type="text" name="phone" required placeholder="enter your phone number">
       <input type="email" name="email" required placeholder="enter your email">
       <input type="password" name="password" required placeholder="enter your password">
-      <input type="password" name="cpassword" required placeholder="confirm your password">
-      <select name="user_type">
-         <option value="user">user</option>
-      </select>
+
       <input type="submit" name="submit" value="register now" class="form-btn">
       <a href='../admin_page.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
    </form>

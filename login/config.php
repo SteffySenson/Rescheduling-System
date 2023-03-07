@@ -1,5 +1,5 @@
 <?php
 
-$conn = mysqli_connect('localhost','root','','schedule');
+$conn = mysqli_connect('localhost','root','','timetable');
 
 ?>

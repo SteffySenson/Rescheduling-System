@@ -1,5 +1,7 @@
 <?php
 
-$conn = mysqli_connect('localhost','root','','schedule');
-
+$conn = mysqli_connect('localhost','root','','timetable');
+if($conn===false){
+    echo "not connected";
+}
 ?>

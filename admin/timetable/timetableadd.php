@@ -43,6 +43,30 @@ if(isset($_POST['submit'])){
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/style.css">
+   <script>
+      function course(str) {
+
+if (str == "") {
+  //var data="<input type='text id='inp9' placeholder='Enter Department Id..' name='teachdid'></input>";
+  //document.getElementById("txtHint").innerHTML = data;
+  return;
+} else {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+  };
+  xmlhttp.open("GET","getcourse.php?q="+str,true);
+  xmlhttp.send();
+  
+}
+}
+function course4(){
+          var number=document.getElementById("studcid").value; 
+          document.getElementById("inp12").value=number;
+      }
+   </script>
 </head>
 <body>
 <div class="form-container">
@@ -59,16 +83,34 @@ if(isset($_POST['submit'])){
       <?php
       $query=mysqli_query($conn,"select * from department_");
       ?>
-      <select name="bname" id="block_">
-      <option value="">Select a Department</option>
+      <!--<select name="bname" id="block_" onchange="subject(this.value)">
+      <option value="0">Select a Department</option>
          <?php
-         while($row=mysqli_fetch_array($query)){
-            echo "<option value='$row[department_id]'>".$row['department_name']."</option>";
-         }
+        // while($row=mysqli_fetch_array($query)){
+           // echo "<option value='$row[department_id]'>".$row['department_name']."</option>";
+         //}
          ?>
          
-      </select>
-
+      </select>-->
+            <select name="bname" onchange="course(this.value)" id="iid">
+             
+                            <?php
+                            include("config.php");
+                            $sel="select * from institution";
+                            $data=mysqli_query($dbcon,$sel);
+                            echo "<option value=''>Select an Institution</option>";
+                            while($row=mysqli_fetch_array($data))
+                            {
+                               echo "<option value=".$row['Institution_Id'].">".$row['Institution_Name']."</option>";
+                            }
+                            ?>
+                        </select>
+        </div>
+        <div class="top2">
+            <label for="inp9"><h5>Course Id</h5></label>
+            <div id="txtHint"><input type="text" id="inp9" placeholder="Enter Course Id.." name="studcid"></input></div>
+            <input type="hidden" id="inp12" name="studcid" >
+        </div>
       <?php
       $query=mysqli_query($conn,"select * from semester_");
       ?>
@@ -134,6 +176,20 @@ $(document).ready(function(){
    });
 
 $(document).ready(function(){
+   $("#floor_").change(function(){
+      var said= $('#block_').val();
+      var vaid= $(this).val();
+      $.ajax({
+         url:'floor.php',
+         method:'POST',
+         data: {said:said,vaid:vaid},
+         success:function(data){
+            $("#subject_").html(data);
+         }
+      });
+      });
+   });
+   $(document).ready(function(){
    $("#floor_").change(function(){
       var said= $('#block_').val();
       var vaid= $(this).val();

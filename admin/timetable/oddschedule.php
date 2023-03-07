@@ -24,11 +24,36 @@
             #schedule tr:nth-child(even){background-color: #f2f2f2;}
             /*#schedule tr:hover {background-color: #ddd;}*/
             #schedule td:hover{background-color: darkgray;}
+            .button {
+  font-family: 'Poppins', sans-serif;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: -80px 80px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.button1:hover {
+  background-color: #555555;
+  color: white;
+}
             </style>
     </head>
     <body>
     <?php
 include("nav.php");
+$cid=@$_GET['q'];
 ?>
 <div>
 
@@ -200,9 +225,7 @@ include("nav.php");
             <td align="center" height="25"><a href="reallocation.php">-</a></td>
         </tr>      
     </table>
-    <?php
-    include("oddslide.php");
-    ?>
+    <a href="schedule.php?q=<?=$cid?>"><button type="radio" class="button button1" style="text-decoration: none;">even</button></a>
 </div>
 </body>
 </html>

@@ -72,7 +72,9 @@ if(!isset($_SESSION['admin_name'])){
 }
 
 .container .content .btn{
-   display: block;
+   display: flex;
+   justify-content:space-between;
+   align-content:center;
    padding: 5px 20px;
    font-size: 20px;
    background: #333;
@@ -88,42 +90,40 @@ if(!isset($_SESSION['admin_name'])){
 .container .content .btn:hover{
    background: darkorange;
 }
+.btn{
+                display: inline-block;
+                padding:5px 15px;
+              /*font-size: 10px;*/
+                background: #333;
+                color:#fff;
+                margin:0 5px;
+                text-transform: capitalize;
+}
+
+.btn:hover{
+   background: darkorange;
+}
 </style>
 </head>
 <body>
    <?php
-   include("admin_home.php");
+include("nav.php");
+echo "<a href='../admin_page.php' class='btn'>Go Back</a>";
    ?>
    
-<div class="container">
 
-   <div class="content">
-      <a href="./announcement/announcementadd.php"target="_top" class="btn">Add Announcement</a>
-      <a href="./announcement/viewannouncement.php"target="_top" class="btn">View Announcement</a>
-      <a href="./progress/progressadd.php"target="_top" class="btn">Add Progress</a>
-      <a href="./progress/viewprogress.php"target="_top" class="btn">View Progress</a>
-      <a href="./department/departmentadd.php"target="_top" class="btn">Add Department</a>
-      <a href="./department/viewdepartment.php"target="_top" class="btn">View Department</a>
-      <a href="./course/courseadd.php"target="_top" class="btn">Add Course</a>
-      <a href="./course/viewcourse.php"target="_top" class="btn">View Course</a>
-      <a href="./subject/subjectadd.php"target="_top" class="btn">Add Subject</a>
-      <a href="./subject/viewsubject.php"target="_top" class="btn">View Subject</a>
-      <a href="./teacher/teacheradd.php"target="_top" class="btn">Add Teacher</a>
-      <a href="./teacher/viewteacher.php"target="_top" class="btn">View Teacher</a>
-   </div>
-
-</div>
 
 <div class="container" style="padding: 0px 0px; margin: 200px">
-<h1 style="padding: 30px 0px; text-align:center">
-      Class Hour Scheduling System
-</h1>
-   <div class="content">
-   <a href="./timetable/timetableadd.php"target="_top" class="btn">Add Schedule</a>
-   <a href="./timetable/viewschedule.php"target="_top" class="btn">View Schedule</a>
-   <a href="./timetable/schedule.php"target="_top" class="btn">Add Reallocation</a>
-   <a href="./timetable/schedule.php"target="_top" class="btn">View Reallocation</a>
-  
+
+<div class="content">
+    <?php
+        $sql="SELECT * from course";
+        $data=mysqli_query($conn,$sql);
+        while($row=mysqli_fetch_array($data)){
+            echo '<a href="schedule.php?q='.$row['Course_Id'].'" target="_top" class="btn">'.$row['C_Name'].'</a>';
+        }
+    ?>
+</div>
 </div>
 </body>
 </html>
