@@ -126,7 +126,7 @@ if(isset($_POST['submit'])){
       <input type="text" name="name" required placeholder="Enter the Course name:">
       <input type="text"  name="sem" required placeholder="Enter No. of Semesters:">
       <?php
-      $query=mysqli_query($conn,"select * from department");
+      $query=mysqli_query($conn,"select * from department_");
       ?>
       <select name="dname">
          <option value="">Select a Department</option>
