@@ -96,7 +96,7 @@ if(!isset($_SESSION['admin_name'])){
       echo "<table>";
       echo "<tr id='header'>";
       echo "<th>Department Name</th>";
-      echo "<th>HOD</th>";
+      echo "<th>Department HOD</th>";
       echo "<th>Update</th>";
       echo "<th>Delete</th>";
       echo "</tr>";

@@ -10,13 +10,13 @@ if(isset($_POST['submit'])){
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $desc = mysqli_real_escape_string($conn, $_POST['desc']);
  
-    $select = " SELECT * FROM department_ WHERE department_name = '$name' ";
+    $select = " SELECT * FROM department_ WHERE D_Name = '$name' ";
  
     $result = mysqli_query($conn, $select);
  
-    if(mysqli_num_rows($result) > 0){
+    if(true){
  
-        $insert = " update department_ set department_name = '$name', department_desc = '$desc' where department_name = '$name' ";
+        $insert = " update department_ set D_Name = '$name', HOD = '$desc' where D_Name = '$rn' ";
         $res=mysqli_query($conn, $insert);
         if($res)
           {
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register form</title>
+   <title>Update form</title>
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
