@@ -126,7 +126,7 @@ include("nav.php");
             $sname=$row2['S_Name'];
             $tid2=$row2['Teacher_Id'];
             $dat=date("Y/m/d");
-            $s="select * from reallocate where Schedule_Id=$sid and Date=$dat and tid2!=0";
+            $s="select * from reallocate where Schedule_Id=$sid and Date=$dat and tid2!=0 and period=1";
             $d=mysqli_query($conn,$s);
             if(mysqli_num_rows($d)>0){
                 $r=mysqli_fetch_array($d);
@@ -157,7 +157,7 @@ include("nav.php");
             $tid2=$row2['Teacher_Id'];
             $dat=date("Y/m/d");
          
-            $s="select * from reallocate where Schedule_Id=$sid and Date=$dat and tid2!=0";
+            $s="select * from reallocate where Schedule_Id=$sid and Date=$dat and tid2!=0 and period=2";
             $d=mysqli_query($conn,$s);
             if(mysqli_num_rows($d)>0){
                 $r=mysqli_fetch_array($d);
@@ -188,7 +188,7 @@ include("nav.php");
             $tid2=$row2['Teacher_Id'];
             $dat=date("Y/m/d");
             $dat=date("Y/m/d");
-            $s="select * from reallocate where Schedule_Id=$sid and Date=$dat and tid2!=0";
+            $s="select * from reallocate where Schedule_Id=$sid and Date=$dat and tid2!=0 and period=3";
             $d=mysqli_query($conn,$s);
             if(mysqli_num_rows($d)>0){
                 $r=mysqli_fetch_array($d);
@@ -219,7 +219,7 @@ include("nav.php");
             $tid2=$row2['Teacher_Id'];
             $dat=date("Y/m/d");
             $dat=date("Y/m/d");
-            $s="select * from reallocate where Schedule_Id=$sid and Date=$dat and tid2!=0";
+            $s="select * from reallocate where Schedule_Id=$sid and Date=$dat and tid2!=0 and period=4";
             $d=mysqli_query($conn,$s);
             if(mysqli_num_rows($d)>0){
                 $r=mysqli_fetch_array($d);
@@ -248,9 +248,9 @@ include("nav.php");
             $row2=mysqli_fetch_array($data2);
             $sname=$row2['S_Name'];
             $tid2=$row2['Teacher_Id'];
+            $dat=date("Y/m/d"   );
             $dat=date("Y/m/d");
-            $dat=date("Y/m/d");
-            $s="select * from reallocate where Schedule_Id=$sid and Date=$dat and tid2!=0";
+            $s="select * from reallocate where Schedule_Id=$sid and Date=$dat and tid2!=0 and period=5";
             $d=mysqli_query($conn,$s);
             if(mysqli_num_rows($d)>0){
                 $r=mysqli_fetch_array($d);

@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
 
          $_SESSION['user_name'] = $row['U_Name'];
          $_SESSION['user_id'] = $row['User_Id'];
-         header('location:../user/index.php');
+         header('location:../user/home.php');
          exit;
 
       }elseif($row['U_Type'] == 'teacher'){
