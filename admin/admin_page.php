@@ -35,7 +35,7 @@ if(!isset($_SESSION['admin_name'])){
    min-height: 80vh;
    display: block;
    float: left;
-   padding: 5px 5px;
+   padding: 30px 30px;
    width: 70vh;
    margin: 0px;
 
@@ -110,19 +110,18 @@ if(!isset($_SESSION['admin_name'])){
       <a href="./subject/viewsubject.php"target="_top" class="btn">View Subject</a>
       <a href="./teacher/teacheradd.php"target="_top" class="btn">Add Teacher</a>
       <a href="./teacher/viewteacher.php"target="_top" class="btn">View Teacher</a>
+      <a href="./timetable/timetableadd.php"target="_top" class="btn">Add Schedule</a>
+      <a href="./timetable/viewschedule.php"target="_top" class="btn">View Schedule</a>
    </div>
 
 </div>
 
 <div class="container" style="padding: 0px 0px; margin: 200px">
-<h1 style="padding: 30px 0px; text-align:center">
+<h1 style="padding: 90px 0px; text-align:center">
       Class Hour Scheduling System
 </h1>
    <div class="content">
-   <a href="./timetable/timetableadd.php"target="_top" class="btn">Add Schedule</a>
-   <a href="./timetable/viewschedule.php"target="_top" class="btn">View Schedule</a>
-   <a href="./timetable/schedule.php"target="_top" class="btn">Add Reallocation</a>
-   <a href="./timetable/schedule.php"target="_top" class="btn">View Reallocation</a>
+
   
 </div>
 </body>
