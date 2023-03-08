@@ -5,10 +5,10 @@
 if(isset($_POST['submit'])){
 
    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
-   $bname = mysqli_real_escape_string($conn, $_POST['bname']);
+   //$bname = mysqli_real_escape_string($conn, $_POST['bname']);
    $desc = mysqli_real_escape_string($conn, $_POST['desc']);
-
-   $select = " SELECT * FROM progress_ WHERE subject_name = '$bname'";
+$bname=$_POST['bname'];
+   $select = " SELECT * FROM progress_ WHERE Subject_Id = '$bname'";
 
    $result = mysqli_query($conn, $select);
 
@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
       $error[] = 'progress already exist!';
 
    }else{
-         $insert = "INSERT INTO progress_(subject_name, progress_percent, progress_desc) VALUES('$bname','$fname','$desc')";
+         $insert = "INSERT INTO progress_(Subject_Id, progress_percent, progress_desc) VALUES('$bname','$fname','$desc')";
          $res=mysqli_query($conn, $insert);
          if($res)
          {
@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register form</title>
+   <title>Add</title>
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
@@ -60,7 +60,7 @@ if(isset($_POST['submit'])){
       <option value="">Select a subject</option>
          <?php
          while($row=mysqli_fetch_array($query)){
-            echo "<option value='$row[subject_name]'>".$row['subject_name']."</option>";
+            echo "<option value='$row[Subject_Id]'>".$row['S_Name']."</option>";
          }
          ?>
          

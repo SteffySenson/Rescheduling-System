@@ -16,7 +16,7 @@ if(!isset($_SESSION['admin_name'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>admin page</title>
+   <title>View</title>
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
@@ -90,22 +90,22 @@ if(!isset($_SESSION['admin_name'])){
 <body>
    
       <?php
-      $sql = "SELECT * FROM department_";
+      $sql = "SELECT * FROM course";
       if ($res = mysqli_query($conn, $sql)) {
       if (mysqli_num_rows($res) > 0) {
       echo "<table>";
       echo "<tr id='header'>";
-      echo "<th>Department Name</th>";
-      echo "<th>Department Description</th>";
+      echo "<th>Course Name</th>";
+      echo "<th>Semesters</th>";
       echo "<th>Update</th>";
       echo "<th>Delete</th>";
       echo "</tr>";
       while ($row = mysqli_fetch_array($res)) {
       echo "<tr>";
-      echo "<td>".$row['department_name']."</td>";
-      echo "<td>".$row['department_desc']."</td>";
-      echo "<td><a href='updatedepartment.php?rn=$row[department_name]&fn=$row[department_desc]' class='btn'>Update</a></td>";
-      echo "<td><a href='deletedepartment.php?rn=$row[department_name]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo "<td>".$row['C_Name']."</td>";
+      echo "<td>".$row['Semesters']."</td>";
+      echo "<td><a href='updatecourse.php?rn=$row[C_Name]&fn=$row[Semesters]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletecourse.php?rn=$row[C_Name]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
       echo "</tr>";
       }
       echo "<tr>";

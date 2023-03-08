@@ -25,9 +25,9 @@ if(!isset($_SESSION['admin_name'])){
     
     table {
         position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        left: 40%;
+        top: 55%;
+        transform: translate(-30%, -30%);
         border-collapse: collapse;
         width: 800px;
         height: 200px;
@@ -90,12 +90,12 @@ if(!isset($_SESSION['admin_name'])){
 <body>
    
       <?php
-      $sql = "SELECT su.*,de.department_name,se.semester_no FROM department_ de,semester_ se,subject_ su where su.department_id=de.department_id and su.semester_no=se.semester_no and se.department_id=de.department_id";
+      $sql = "SELECT su.*,cu.C_Name, te.tea_name FROM course cu,subject_ su, teacher_ te where su.Course_Id=cu.Course_Id and su.Teacher_Id=te.tea_id";
       if ($res = mysqli_query($conn, $sql)) {
       if (mysqli_num_rows($res) > 0) {
       echo "<table>";
       echo "<tr id='header'>";
-      echo "<th>Department Name</th>";
+      echo "<th>Course Name</th>";
       echo "<th>Semester Number</th>";
       echo "<th>Subject Code</th>";
       echo "<th>Subject Name</th>";
@@ -104,12 +104,12 @@ if(!isset($_SESSION['admin_name'])){
       echo "</tr>";
       while ($row = mysqli_fetch_array($res)) {
       echo "<tr>";
-      echo "<td>".$row['department_name']."</td>";
-      echo "<td>".$row['semester_no']."</td>";
-      echo "<td>".$row['subject_code']."</td>";
-      echo "<td>".$row['subject_name']."</td>";
-      echo "<td><a href='updatesubject.php?rn=$row[department_name]&cn=$row[semester_no]&rr=$row[subject_code]&row=$row[subject_name]' class='btn'>Update</a></td>";
-      echo "<td><a href='deletesubject.php?rn=$row[department_id]&cn=$row[semester_no]&rr=$row[subject_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo "<td>".$row['C_Name']."</td>";
+      echo "<td>".$row['Sem_No']."</td>";
+      echo "<td>".$row['sub_code']."</td>";
+      echo "<td>".$row['S_Name']."</td>";
+      echo "<td><a href='updatesubject.php?rn=$row[C_Name]&cn=$row[Sem_No]&rr=$row[sub_code]&row=$row[S_Name]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletesubject.php?rn=$row[Subject_Id]&cn=$row[Sem_No]&rr=$row[sub_code]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
       echo "</tr>";
       }
       echo "<tr>";

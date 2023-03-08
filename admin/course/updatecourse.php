@@ -10,21 +10,21 @@ if(isset($_POST['submit'])){
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $desc = mysqli_real_escape_string($conn, $_POST['desc']);
  
-    $select = " SELECT * FROM department_ WHERE department_name = '$name' ";
+    $select = " SELECT * FROM course WHERE C_Name = '$name' ";
  
     $result = mysqli_query($conn, $select);
  
-    if(mysqli_num_rows($result) > 0){
+    if(true){
  
-        $insert = " update department_ set department_name = '$name', department_desc = '$desc' where department_name = '$name' ";
+        $insert = " update course set C_Name = '$name', Semesters = '$desc' where C_name = '$rn' ";
         $res=mysqli_query($conn, $insert);
         if($res)
           {
-             $error[] = 'department updated succesfully';
+             $error[] = 'Course updated succesfully';
           }
  
     }else{
-             $error[] = 'department name not match';
+             $error[] = 'Course name not match';
        }
     }
  
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register form</title>
+   <title>Update</title>
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
@@ -64,7 +64,7 @@ if(isset($_POST['submit'])){
 <div class="form-container">
 
    <form action="" method="post">
-      <h3>Update Announcement</h3>
+      <h3>Update Course</h3>
       <?php
       if(isset($error)){
          foreach($error as $error){
@@ -75,7 +75,7 @@ if(isset($_POST['submit'])){
       <input type="text" name="name" value="<?php echo "$rn" ?>">
       <input type="textbox" rows="3" name="desc" value="<?php echo "$fn" ?>">
       <input type="submit" name="submit" value="Submit" class="form-btn">
-      <a href='viewdepartment.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
+      <a href='viewcourse.php'><input type="button" name="goback" value="Go back" class="form-btn"></a>
    </form>
 
 

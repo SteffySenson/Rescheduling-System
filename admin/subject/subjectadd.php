@@ -59,7 +59,7 @@ if(isset($_POST['submit'])){
       };
       ?>
       <?php
-      $query=mysqli_query($conn,"select * from department");
+      $query=mysqli_query($conn,"select * from department_");
       ?>
       <select name="dname" id="department_">
       <option value="">Select a Department</option>

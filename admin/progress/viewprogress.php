@@ -16,7 +16,7 @@ if(!isset($_SESSION['admin_name'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>admin page</title>
+   <title>View</title>
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
@@ -93,6 +93,7 @@ if(!isset($_SESSION['admin_name'])){
       $sql = "SELECT * FROM progress_";
       if ($res = mysqli_query($conn, $sql)) {
       if (mysqli_num_rows($res) > 0) {
+        
       echo "<table>";
       echo "<tr id='header'>";
       echo "<th>Subject Name</th>";
@@ -102,12 +103,16 @@ if(!isset($_SESSION['admin_name'])){
       echo "<th>Delete</th>";
       echo "</tr>";
       while ($row = mysqli_fetch_array($res)) {
+        $sid=$row['Subject_Id'];
+        $s2="select * from subject_ where Subject_Id=$sid";
+        $r2=mysqli_query($conn,$s2);
+        $d2=mysqli_fetch_array($r2);
       echo "<tr>";
-      echo "<td>".$row['subject_name']."</td>";
+      echo "<td>".$d2['S_Name']."</td>";
       echo "<td>".$row['progress_percent']."</td>";
       echo "<td>".$row['progress_desc']."</td>";
-      echo "<td><a href='updateprogress.php?rn=$row[subject_name]&fn=$row[progress_desc]&cn=$row[progress_percent]' class='btn'>Update</a></td>";
-      echo "<td><a href='deleteprogress.php?rn=$row[subject_name]&cn=$row[progress_id]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo "<td><a href='updateprogress.php?rn=$row[Subject_Id]&fn=$row[progress_desc]&cn=$row[progress_percent]' class='btn'>Update</a></td>";
+      echo "<td><a href='deleteprogress.php?rn=$row[Subject_Id]&cn=$row[progress_id]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
       echo "</tr>";
       }
       echo "<tr>";

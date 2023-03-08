@@ -24,10 +24,9 @@ if(!isset($_SESSION['admin_name'])){
    <style>
     
     table {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        margin-left: auto;
+        margin-right: auto;
+        
         border-collapse: collapse;
         width: 800px;
         height: 200px;
@@ -90,32 +89,32 @@ if(!isset($_SESSION['admin_name'])){
 <body>
    
       <?php
-      $sql = "SELECT us.*,st.*,de.*,se.* FROM user_form us,student_ st,department_ de,semester_ se where st.stud_dep=de.department_id and st.stud_sem=se.semester_id and st.stud_id =us.user_no and se.department_id=de.department_id;";
+      $sql = "SELECT te.*,de.*, cu.*, su.* FROM teacher_ te,department_ de, course cu, subject_ su where te.tea_dep=de.Department_Id and te.tea_id=su.Teacher_Id;";
       if ($res = mysqli_query($conn, $sql)) {
       if (mysqli_num_rows($res) > 0) {
       echo "<table>";
       echo "<tr id='header'>";
-      echo "<th>Register Number</th>";
+      echo "<th>ID</th>";
       echo "<th>Name</th>";
       echo "<th>Department</th>";
-      echo "<th>Semester</th>";
+      echo "<th>Course</th>";
+      echo "<th>Subject Name</th>";
       echo "<th>Phone</th>";
       echo "<th>Email</th>";
-      echo "<th>Password</th>";
       echo "<th>Update</th>";
       echo "<th>Delete</th>";
       echo "</tr>";
       while ($row = mysqli_fetch_array($res)) {
       echo "<tr>";
-      echo "<td>".$row['stud_id']."</td>";
-      echo "<td>".$row['stud_name']."</td>";
-      echo "<td>".$row['department_name']."</td>";
-      echo "<td>".$row['semester_no']."</td>";
-      echo "<td>".$row['stud_phone']."</td>";
-      echo "<td>".$row['stud_email']."</td>";
-      echo "<td>".$row['password']."</td>";
-      echo "<td><a href='updatestudent.php?rn=$row[stud_id]&cn=$row[stud_name]&rr=$row[department_name]&row=$row[semester_id]&col=$row[stud_phone]&email=$row[stud_email]&passw=$row[password]' class='btn'>Update</a></td>";
-      echo "<td><a href='deletestudent.php?rn=$row[stud_id]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
+      echo "<td>".$row['tea_id']."</td>";
+      echo "<td>".$row['tea_name']."</td>";
+      echo "<td>".$row['D_Name']."</td>";
+      echo "<td>".$row['C_Name']."</td>";
+      echo "<td>".$row['subject_name']."</td>";
+      echo "<td>".$row['tea_phone']."</td>";
+      echo "<td>".$row['tea_email']."</td>";
+      echo "<td><a href='updatestudent.php?rn=$row[tea_id]&cn=$row[tea_name]&rr=$row[D_Name]&row=$row[C_Name]&col=$row[subject_name]&sub=$row[tea_phone]&email=$row[tea_email]' class='btn'>Update</a></td>";
+      echo "<td><a href='deletestudent.php?rn=$row[tea_id]' onclick='return checkdelete()' class='btn'>Delete</a></td>";
       echo "</tr>";
       }
       echo "<tr>";

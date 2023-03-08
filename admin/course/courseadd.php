@@ -96,7 +96,7 @@ if(isset($_POST['submit'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register form</title>
+   <title>Add</title>
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
@@ -126,7 +126,7 @@ if(isset($_POST['submit'])){
       <input type="text" name="name" required placeholder="Enter the Course name:">
       <input type="text"  name="sem" required placeholder="Enter No. of Semesters:">
       <?php
-      $query=mysqli_query($conn,"select * from department");
+      $query=mysqli_query($conn,"select * from department_");
       ?>
       <select name="dname">
          <option value="">Select a Department</option>

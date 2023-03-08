@@ -62,7 +62,7 @@ if(isset($_POST['submit'])){
       <input type="text" name="rname" required placeholder="enter register number">
       <input type="text" name="name" required placeholder="enter name">
       <?php
-      $query=mysqli_query($conn,"select * from department");
+      $query=mysqli_query($conn,"select * from department_");
       ?>
       <select name="dname" id="block_">
       <option value="">Select a Department</option>
