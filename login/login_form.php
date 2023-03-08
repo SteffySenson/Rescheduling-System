@@ -4,13 +4,9 @@
 session_start();
 
 if(isset($_POST['submit'])){
-
-   //$name = mysqli_real_escape_string($conn, $_POST['name']);
+   
    $email = mysqli_real_escape_string($conn, $_POST['email']);
    $pass = md5($_POST['password']);
-   //$cpass = md5($_POST['cpassword']);
-   //$user_type = $_POST['user_type'];
-
    $select = " SELECT * FROM users WHERE E_Mail = '$email' && Password = '$pass' ";
 
    $result = mysqli_query($conn, $select);
@@ -21,18 +17,31 @@ if(isset($_POST['submit'])){
 
       if($row['U_Type'] == 'admin'){
 
-         $_SESSION['admin_name'] = $row['name'];
+         $_SESSION['admin_name'] = $row['U_Name'];
+         $_SESSION['admin_id'] = $row['User_Id'];
          header('location:../admin/admin_page.php');
+         exit;
 
       }elseif($row['U_Type'] == 'user'){
 
-         $_SESSION['user_name'] = $row['name'];
+         $_SESSION['user_name'] = $row['U_Name'];
+         $_SESSION['user_id'] = $row['User_Id'];
          header('location:../user/index.php');
+         exit;
+
+      }elseif($row['U_Type'] == 'teacher'){
+
+         $_SESSION['faculty_name'] = $row['U_Name'];
+         $_SESSION['faculty_id'] = $row['User_Id'];
+         header('location:../faculty/home.php');
+         exit;
 
       }elseif($row['U_Type'] == 'Teacher'){
 
-         $_SESSION['user_name'] = $row['name'];
-         header('location:../faculty/index.php');
+         $_SESSION['faculty_name'] = $row['U_Name'];
+         $_SESSION['faculty_id'] = $row['User_Id'];
+         header('location:../faculty/home.php');
+         exit;
 
       }
      

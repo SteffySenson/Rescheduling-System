@@ -39,7 +39,7 @@ li a h3 {
 
 <ul>
   <li><a><h3>Admin Dashboard</h3></a></li>
-  <li style="float:right"><a href="../login/logout.php"><h3>Logout</h3></a></li>
+  <li style="float:right"><a href="/logout.php"><h3>Logout</h3></a></li>
 </ul>
  <!-- <li style="float:right"><a><h3>Welcome, <?php //echo $_SESSION['admin_name'] ?></h3></a></li> -->
 </body>

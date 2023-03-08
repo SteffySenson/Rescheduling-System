@@ -28,6 +28,7 @@ if(isset($_POST['submit'])){
             $insert = "INSERT INTO Users(Roll_No,U_Name, E_Mail, Password,U_Type,Department_Id) VALUES($reg,'$name','$email','$pass','$user_type',$did)";
             mysqli_query($conn, $insert);
             header('location:login_form.php');
+            exit;
          }
          $insert = "INSERT INTO Users(Roll_No,U_Name, E_Mail, Password,U_Type) VALUES($reg,'$name','$email','$pass','$user_type')";
          mysqli_query($conn, $insert);
@@ -59,21 +60,24 @@ if(isset($_POST['submit'])){
    <form action="" method="post">
       <h3>register</h3>
       <?php
+      
       if(isset($error)){
          foreach($error as $error){
             echo '<span class="error-msg">'.$error.'</span>';
          };
       };
+      
       ?>
       <input type="text" name="reg" required placeholder="Enter your regno">
       <input type="text" name="name" required placeholder="Enter your name">
       <input type="email" name="email" required placeholder="Enter your email">
       <input type="password" name="password" required placeholder="Enter your password">
       <input type="password" name="cpassword" required placeholder="*Confirm your password">
+      
       <select name="depart">
          <option value="0">Select a department</option>
          <?php
-         
+        
          
          while($row=mysqli_fetch_array($data)){
             echo '<option value="'.$row['Department_Id'].'" >'.$row['D_Name'].'</option>';
